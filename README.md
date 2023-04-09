@@ -1,11 +1,21 @@
-# Smart_cpp
-This project is for learning C++.
-If you have the basic knowledge of C++, then there is nothing valuable here.
+# SmartCpp
+### Introduction
 
-### Contribution is welcomed
+This project is for learning C++. If you have the basic knowledge of C++, then there is nothing valuable here.
+
+You may have found that most of the content of this project is illustrated in the book "C++ primer". BingGo! I am reading this book now and will last a long time. After I finish reading this book, I will try to clear up all the codes and text into some topics and add something else. Whatever, I will keeping maintain this project as long as I am stilling learning or using C++.
+
+For now, I am trying to add more useful things into this project, though it seems a mess.
+
+### Contributors
+
++ Mobeidexuesss
++ Expecting...
+
+> Contribution is welcomed!
 
 
 ### Welcome to Contact Me:
-***author**: Mobeidexue*
+**author**: *Mobeidexue*
 
-***email**: 2058266435@qq.com or lify0819@mails.jlu.edu.cn*
+**email**: *2058266435@qq.com or lify0819@mails.jlu.edu.cn*
