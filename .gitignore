@@ -31,3 +31,6 @@
 *.exe
 *.out
 *.app
+
+# Windows bat file
+*.bat
