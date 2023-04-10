@@ -34,14 +34,38 @@ int main(int argc, char const *argv[])
 	 * which it refers.
 	 * One of them is we can initialze a reference to const from any
 	 * expression that can be converted to the type of the reference.
-	 * 
 	 *
+	 * Top Level const and Low Level const
+	 *
+	 * The top-level const indicates that the pointer itself is a const.
+	 * When a pointer can point to a const object, we refer to that
+	 * const as a low-level const. 
+	 * 
+	 * When we copy an object, top level consts are ignored. But please
+	 * pay attention, consts are not top-level when we bind a reference
+	 * to an initializer.
+	 *
+	 * constexpr and Constant Expressions
+	 * 
+	 * A constant expression is an expression whose value cannot change
+	 * and that can be evaluated at compile time.
+	 * Whether a given object (or expression) is a constant expression
+	 * depends on the types and the initializers.
+	 *
+	 * We can ask the compiler to verify that a variable is a constant
+	 * expression by declaring the variable in a constexpr declaration.
+	 * 
+	 * Literal Types
+	 * The types we can use in a constexpr are known as "literal types"
+	 * because they are simple enough to have literal values.
+	 * Of the types we have used so far, the arithmetic, reference, and
+	 * pointer types are literal types.
 	 */ 
 
 
 
-	extern const int height;
-	std::cout << "The height is " << height << std::endl;
+	// extern const int height;
+	// std::cout << "The height is " << height << std::endl;
 	
 	const int num = 100;
 	const int &refNum = num;	// ok
@@ -78,7 +102,48 @@ int main(int argc, char const *argv[])
 	// int *pt1 = &t1;		// error: invalid conversion
 	// int &reft1 = t1;		// error
 
+	const int *pt2;			
+	pt2 = &t1;				
+	// int * const pt3;		// error: must be initialized
 
+	const int *pt4 = &s2;
+	s2 += 1;				// ok
+	// *pt4 += 1;			// error
+
+	/*
+	 * It may be helpful to think of pointers and references
+	 * to const as pointers or references "that think they point
+	 * or refer to const".
+	 */
+
+	int * const pt5 = &s2;
+
+	std::cout << *pt2 << std::endl;
 	std::cout << s2 << std::endl;
+	
+
+	// constexpr and Constant Expressions
+	const int max_files = 20;			// is a constant expression
+	const int limit = max_files + 1;	// is a constant expression
+	int staff_size = 27;				// not a constant expression
+	// const int sz = get_size(); 		// not a constant expression
+
+	constexpr int mf = 20;				// is a constant expression
+	constexpr int limit_mf = mf + 1;	// is a constant expression
+	// constexpr int sz_mf = size();	// ok only if the size() is a
+										// constexpr function
+
+	/*
+	 * Pointers and constexpr
+	 * It is important to understand that when we define a pointer in
+	 * a constexpr declaration, the constexpr specifier applies to
+	 * the pointer, not the type to which the pointer points.
+	 *
+	 */
+	// constexpr const int *pmf = &mf;	// error: &mf is not a constant expression
+	// the constexpr imposes a top-level const on the objects it defines
+	constexpr int *pmf = nullptr;
+	// std::cout << *pmf << std::endl;
+
 	return 0;
 }
