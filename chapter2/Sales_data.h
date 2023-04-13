@@ -18,6 +18,8 @@ struct Sales_data {
 	std::string bookNo;
 	unsigned units_sold = 0;
 	double revenue = 0.;
+    short rate{0};
+    short count = {0};
 };
 
 #endif

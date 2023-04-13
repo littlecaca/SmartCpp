@@ -3,15 +3,19 @@
 #include "Sales_data.h"
 
 /*
- * if we use a class a class in several diferent files, the class's
+ * if we use a class in several diferent files, the class's
  * definition must be the same in each file.
+ *
+ * In-class Initializer
+ * 
+ * We can't specify an in-class initializer 
+ * inside parentheses, they mush either be enclosed inside curly
+ * braces or follow an = sign.
  */
 
 // struct Sales_data
 // {
 // 	std::string bookNo;
-// 	// we can't specify an in-class initializer 
-// 	// inside parentheses or curly braces
 // 	unsigned units_sold = 0;	// C++11: in-class initializer
 // 	double revenue = 0.;	
 // };	// expected ‘;’ after struct definition
