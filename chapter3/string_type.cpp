@@ -77,9 +77,14 @@ int main(int argc, char const *argv[])
      */
 	string s8 = "Hello", s9 = "World";
 	string s10 = s8 + ", " + s9 + '\n';
-	cout << s10;
+	
+	// range-based for
+	for (auto c : s10)
+		cout << c << endl;
 
 	// can't add string literals
 	// string s11 = "Hello" + " , " + s9 + '\n';	// error
+	
+
 	return 0;
 }
