@@ -9,16 +9,20 @@ using std::string;
 int main(int argc, char const *argv[])
 {
 	string text, line;
-	if (getline(cin, text)) {
-		while (getline(cin, line)) {
-			if (line.size() > 0) {
-				text += " " + line;
-			}
+	
+	getline(cin, line);
+	text += line;
+	while (getline(cin, line)) {
+		if (line.size() > 0) {
+			text += " " + line;
 		}
-	} else {
+	}
+
+	if (text.size() == 0) {
 		cout << "no text!" << endl;
 		return -1;
 	}
+	
 
 	text += "\n";
 	cout << text;
