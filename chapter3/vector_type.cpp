@@ -135,8 +135,8 @@ int main(int argc, char const *argv[])
 	// vector::size_type;			// error
 
 	vector<int> intvec2;
-	// beacause the vector is a container that holds pointers, so if you
-	// access the undefined objects, you are more likely to encounter segment fault.
+	// beacause the vector is a container that holds pointers(I have verified this by debuging),
+	// so if you access the undefined objects, you are more likely to encounter segment fault.
 	// cout << intvec2[0] << endl;	// segment fault: core dumped
 
 	return 0;
