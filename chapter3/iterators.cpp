@@ -16,7 +16,7 @@ using std::string;
  * support the subscript operator. Technically speaking, a string is not
  * a container type, but string supports many of the container operations.
  *
- * A valid  iterator either denotes an element or denotes a position one
+ * A valid iterator either denotes an element or denotes a position one
  * past the last element in a container.
  *
  *
@@ -34,6 +34,16 @@ using std::string;
  * vector<int>::const_iterator it2;
  * string<int>::iterator it3;
  * string<int>::const_iterator it4;
+ *
+ *
+ * Standard Container Iterator Operations
+ *
+ * *iter
+ * iter->mem
+ * ++iter
+ * --iter
+ * iter1 == iter2
+ * iter1 != iter2
  *
  *
  * Iterator Arithmetic

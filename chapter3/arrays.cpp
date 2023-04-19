@@ -1,5 +1,6 @@
 #include <iostream>
-
+#include <iterator>
+#include <cctype>
 
 /*
  * Arrays are a compound type.
@@ -24,6 +25,19 @@
  * The most common source of security problems are buffer overflow bugs.
  * Such bugs occur when a program fails to check a subscript and mistakenly
  * uses memory outside the range of an array or similar data structure.
+ *
+ *
+ * Pointers Are Iterators
+ *
+ * In particular, pointers to array elements support the same operations as iterators
+ * on vectors or strings.
+ *
+ *
+ * The Library begin and end Functions
+ *
+ * These functions act like the similarly named container members. But they are not
+ * members of class. Instead, they take an argument that is an array. These functions
+ * are defined in the iterator header.
  */
 
 int main(int argc, char const *argv[])
@@ -37,5 +51,37 @@ int main(int argc, char const *argv[])
 	std::cout << "size:" << sizeof(b) << std::endl;
 
 	std::cout << a[0] << std::endl;
+
+    /*
+     * Pointers and Arrays
+     *
+     * Arrays have a special property--in most places when we use an array,
+     * the compiler automatically substitues a pointer to the first element.
+     */
+    int a1[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6}
+    };
+
+    auto a2 = a1;   // the a2 is a pointer to int
+    /*
+     * The compiler treats the above initialization as if we had writen:
+     *      auto a2 = &(a1[0])
+     */
+
+    decltype(a1) a3 = { // a3 is an 3x3 array
+        1, 1, 4, 0, 8
+    };
+
+    int a4[3] = {1, 2, 4};
+    int *pas = a4;
+    int *pae = &a4[3];    // pointer just past the last element in a1
+    // these equals
+    int *beg = std::begin(a4);
+    int *last = std::end(a4);
+
+    if (!std::isalnum(*a4))
+        std::cout << "no" << std::endl;
+    std::cout << *beg << " " << *pas << std::endl;
 	return 0;
 }
