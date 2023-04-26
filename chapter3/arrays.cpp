@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iterator>
 #include <cctype>
+#include <cstddef>
 
 /*
  * Arrays are a compound type.
@@ -38,6 +39,9 @@
  * These functions act like the similarly named container members. But they are not
  * members of class. Instead, they take an argument that is an array. These functions
  * are defined in the iterator header.
+ *
+ * The result of subtracting two pointers is a library type named ptrdiff_t, like size_t,
+ * which is defined in the cstddef header.
  */
 
 int main(int argc, char const *argv[])
@@ -79,9 +83,24 @@ int main(int argc, char const *argv[])
     // these equals
     int *beg = std::begin(a4);
     int *last = std::end(a4);
+    std::ptrdiff_t n = beg - last;
 
     if (!std::isalnum(*a4))
         std::cout << "no" << std::endl;
     std::cout << *beg << " " << *pas << std::endl;
-	return 0;
+	std::cout << n << " elements" << std::endl;
+
+    // this can be compiled, but it is not valid.
+    // because i and sz are unrelated objects.
+    int i = 0, sz = 42;
+    int *pi = &i, *ps = &sz;
+    if (pi > ps)
+        std::cout << "yes" << std::endl;
+    else
+        std::cout << "no" << std::endl;
+
+    // unlike subscripts for vector and string, the index of the built-in
+    // subscript operator is not an unsigned type
+    int k = a4[-2]; // a4[-2] is the same element as a4[0]
+    return 0;
 }

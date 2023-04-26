@@ -32,5 +32,8 @@
 *.out
 *.app
 
-# Windows bat file
+# Windows bat files
 *.bat
+
+# project config files
+/.idea/
