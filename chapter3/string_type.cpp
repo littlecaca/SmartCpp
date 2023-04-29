@@ -54,7 +54,6 @@ int main(int argc, char const *argv[])
 	cout << s1 << endl;
 
 	cout << "getline:" << endl;
-	// getline doesn't belong to std namespace
 	// getline will not read the \n in the end of the input
 	while (getline(cin, s2))
 		if (!s2.empty()) {
