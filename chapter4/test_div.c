@@ -6,5 +6,6 @@ int main(int argc, char const *argv[])
 	printf("%d\n", div(-2, 3).rem);
 	unsigned char i = -2;
 	printf("%u\n", i);
+	printf("the size of int: %ld\n", sizeof(int));
 	return 0;
 }
