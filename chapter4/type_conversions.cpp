@@ -1,0 +1,63 @@
+#include <iostream>
+
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main(int argc, char const *argv[])
+{
+	/*
+	 | Implicit Conversions
+	 | 
+	 |------Arthmetic Conversions
+	 |
+	 |			In arithmetic and relational expressions with operands of mixed types, the types
+	 |		are converted to a common type.
+	 | 		(int -> long -> long long -> float -> double -> long double)
+	 |		(signed -> unsigned)
+     |			If type of the unsigned operand is  the same as or larger than that of the signed operand,
+     |		the signed operand is converted to unsigned. For example, `long` x `unsigned int` (assuming
+     |		`long` and `int` have the same size), then `long` will be converted to `unsigned int`.
+     |			If all possible values in the unsigned type fit in the larger type, then
+     |		the unsigned operand is converted to the signed type. 		
+     |
+     |------Integral Promotions
+     |
+   	 |			Values of integral types smaller than int are first promoted to an 
+   	 |		appropriate larger integral type. The types bool, char, signed char,
+   	 |		unsigned char, short, and unsiged short are promoted to int if all possible values
+   	 |		of that type fit in an int. Otherwise, the value is promoted to unsigned int.
+   	 |		The larger char types(wchar_t, char16_t, and char32_t)are promoted to the smallest
+   	 |		type of int, unsigned int, long, unsigned long, long long, or unsigned long long in
+   	 |		which all possible values of that chatacter type fit.
+     |
+     |------Assignment Conversions
+     |
+     |			In initializations and assignments, the initializer(except list initializer) ot right-hand
+     |		operand is converted to the type of the variable.
+     | 
+     |------Defalut arguments Conversions
+     |
+     |			()
+	 | 
+	 |------Condition Conversions
+	 |		
+	 |			In conditions, nonbool expressions are converted to bool.
+	 */
+
+	int m = 1;
+	m = 3.1;
+
+	cout << m << endl;
+	unsigned uival;
+	short sval;
+	char cval;
+	long lval;
+	unsigned short usval;
+	// examples
+	3.1415926L + 'a';	// (char)'a' -> int -> long double
+	sval + cval; 		// sval and cval promoted to int
+	usval + ival;		// promotion depends on the size of unsigned short and int
+	uival + lval;		// conversion depends on the size of unsigned int and long
+	return 0;
+}
