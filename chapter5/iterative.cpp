@@ -39,6 +39,31 @@ int main(int argc, char const *argv[])
 	// or an object of a type such as vector or string that has begin and end members that
 	// return iterators 
 
+	for (const int &i : {1, 2, 3, 4})
+		cout << i << " ";
+	cout << endl;
+
+	int nums[] = {1, 2, 3, 4};
+	for (int &i : nums) {
+		i *= 2;
+		cout << i << " ";
+	}
+	cout << endl;
+
+
+	/*
+	 * do loop
+	 */
+	
+	// the execution body scope is under condition scope
+	// variables used in condition must be defined outside the body of the do while statement 
+
+	// do {
+	// 	int ival;
+	// 	cout << "> ";
+	// 	cin >> ival;
+	// } while (ival);	// error: `ival` was not declared in this scope
+
 
 	return 0;
 }
