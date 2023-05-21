@@ -31,5 +31,29 @@ int main(int argc, char const *argv[])
 	}
 	cout << "the count of vowel: " << vowelCnt << endl;
 
+	// the language does not allow us to jump over an initialization if the initialized variable is in
+	// scope at the point to which control transfers.
+
+	switch (alpha) {
+		case 'a':
+			// int i = 32;	// error: jump to case label; note:   crosses initialization of ‘int i’
+		case 'b':
+			// the `i` is in scope but it's may be uninitialized
+		default:
+			// the `i` is in scope but it's may be uninitialized
+			cout << "over!" << endl;
+	}
+
+	switch (alpha) {
+		case 'a': {
+			// defining the variable inside a block, thereby ensuring that the variable is out of 
+			// scope at the point of any subsequent label
+			int i = 32;		// ok
+		}
+		case 'b':
+		default:
+			cout << "yes!" << endl;
+	}
+
 	return 0;
 }
