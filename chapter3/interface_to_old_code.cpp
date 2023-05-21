@@ -42,6 +42,7 @@ int main(int argc, char const *argv[])
 	s = "Hello C++";
 
 	// any subsequet use of s that might change the value of s can invalidate this array.
+	// so if you change the s, then call the s.c_str() to get sa again!
 	for (const char *p = sa; *p != '\0'; p++)
 		cout << *p;
 
@@ -56,6 +57,10 @@ int main(int argc, char const *argv[])
 		cout << n;
 	cout << endl;
 
+	// see? the char array can be used like string literals anywhere
+	char sentence[] = "you are genious!";
+	string s2("WoW!"), s3 = s2 + " " + sentence;
+	cout << s3 << endl;
 	return 0;
 
 }

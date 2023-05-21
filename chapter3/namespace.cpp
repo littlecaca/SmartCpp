@@ -7,6 +7,8 @@ using std::endl;
 using std::cin;		// duplicated, but ok
 
 /*
+ * Headers Should Not Include `using` Declarations
+ *
  * The using should not apear in header files,
  * beacuse a program including that header may not
  * intend to use the specified library name, which
