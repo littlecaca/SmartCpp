@@ -74,8 +74,13 @@ int main(int argc, char const *argv[])
 	int j = 0, &r = j, *pj = &j;
 	decltype(j) a;		// ok: a is an int
 	decltype(r + 0) b;	// b is an nonreference int
-	decltype(*pj) c;	// error: c is an int &, must be initialized
-	decltype((j)) d; 	// error: d is an int &, must be initialized
+	// decltype(*pj) c;	// error: c is an int &, must be initialized
+	// decltype((j)) d; 	// error: d is an int &, must be initialized
+
+    int nums[5];
+    // We can use decltype to array to declare another array with the same size
+    decltype(nums) nums2;
+    std::cout << sizeof nums2 << std::endl;
 
 	return 0;
 }

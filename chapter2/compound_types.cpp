@@ -63,6 +63,16 @@ int main(int argc, char const *argv[])
 	refPj = &j;
 	*refPj = 0;
 	std::cout << "The value of j:" << j << std::endl;
+
+	int nums[5][4];
+	int (*nums2)[4] = nums;
+	std::cout << sizeof *nums2 << std::endl;
+	// a reference to array
+	auto &nums3 = nums;
+	decltype((nums)) nums4 = nums;
+
+	std::cout << "The sizeof nums3: " << sizeof nums3 << std::endl;
+	std::cout << "The sizeof nums4: " << sizeof nums4 << std::endl;
 	
 	return 0;
 }

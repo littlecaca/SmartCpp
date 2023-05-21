@@ -43,6 +43,24 @@ int main(int argc, char const *argv[])
 	 |------Condition Conversions
 	 |		
 	 |			In conditions, nonbool expressions are converted to bool.
+	 |
+	 |------Array to Pointer Conversions	
+	 |
+	 |			This conversion is not performed when an array is used with decltype or as
+	 | 		the operand od the addresss-of(&), sizeof, or typeid. The conversion is also omitted
+	 |		when we initialize a reference to an array.
+	 |
+	 |------Function Conversions
+	 |
+	 |			The function name will be converted a pointer to that function when it is used in expression.
+	 |
+	 |------Pointer Conversions
+	 |
+	 |			A constant integral value of 0 and the literal nullptr can be converted to any pointer type;
+	 |		A pointer to any nonconst type can be converted to void *, and a pointer to any type can be
+	 |		converted to a const void*
+	 |
+	 |------Conversions Defined by Class Types  
 	 */
 
 	int m = 1;
