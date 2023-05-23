@@ -67,6 +67,7 @@ int main(int argc, char const *argv[])
 	m = 3.1;
 
 	cout << m << endl;
+	int ival;
 	unsigned uival;
 	short sval;
 	char cval;
@@ -77,5 +78,11 @@ int main(int argc, char const *argv[])
 	sval + cval; 		// sval and cval promoted to int
 	usval + ival;		// promotion depends on the size of unsigned short and int
 	uival + lval;		// conversion depends on the size of unsigned int and long
+
+
+	int nums[][2] = {1, 2, 3};
+	auto pn = nums;		// pn is an int (*)[2]
+	cout << **pn << endl;
+
 	return 0;
 }

@@ -48,5 +48,6 @@ int main(int argc, char const *argv[])
 	if (ptr == 0 && ptr2 == 0)
 		std::cout << "yes" << std::endl;
 	
+	
 	return 0;
 }

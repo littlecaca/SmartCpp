@@ -85,5 +85,13 @@ int main(int argc, char const *argv[])
 	// string s11 = "Hello" + " , " + s9 + '\n';	// error
 	
 
+	// the string object be changed locally
+	string st1("genius");
+	cout << (long long)&st1 << endl; 
+	string &rst = st1;
+	st1 = "ordinary yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy";
+	cout << (long long)&st1 << endl;
+	cout << rst << endl;
+
 	return 0;
-}
+} 
