@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
 	 * sizeof a string or a vector returns only the size of the fixed part of
 	 * these types; it does not return the size used by the object's elements.
 	 *
-	 * Because sizeof returns a constant expression, we cam use the result of a
+	 * Because sizeof returns a constant expression, we can use the result of a
 	 * sizeof expression to specify the dimension of an array.
 	 *
 	 */
