@@ -84,5 +84,8 @@ int main(int argc, char const *argv[])
 	auto pn = nums;		// pn is an int (*)[2]
 	cout << **pn << endl;
 
+	int (*pn2)[2][2] = &nums;
+	int (&rpn)[2][2] = nums;
+
 	return 0;
 }
