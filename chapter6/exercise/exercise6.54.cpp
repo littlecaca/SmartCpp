@@ -25,12 +25,11 @@ int divide(int i, int j) {
     return i / j;
 }
 
-
 int main(int argc, char const *argv[])
 {
  
     // vector<int (int, int)> vf3{};    // error: the function type is not allowed here
-
+    
     vf = {add, subtract, multiply, divide}; 
     
     for (auto f : vf) {
