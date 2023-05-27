@@ -1,31 +1,25 @@
-#include "Sales_data.h"
+#include "../adt.h"
 #include <iostream>
 
-using std::cout;
 using std::cin;
+using std::cout;
 using std::endl;
 
-
-typedef struct Sales_data item;
-
-
-int main(int argc, char const *argv[])
-{
-    item total;
-    if (read(total)) {
-        item trans;
-        while (read(trans)) {
-            if (trans.bookNo == total.bookNo) {
-                combine(total, trans);
+int main(int argc, char const *argv[]) {
+    Sales_data total;
+    if (read(cin, total)) {
+        Sales_data sale;
+        while (read(cin, sale)) {
+            if (sale.bookNo == total.bookNo) {
+                total.combine(sale);
             } else {
-                print(total) << endl;
-                total = trans;
+                print(cout, total);
+                total = sale;
             }
         }
-        print(total) << endl;
+        print(cout, total);
     } else {
-        cout << "No Data?!" << endl;
-        return -1;
+        cout << "No sales?!" << endl;
     }
     return 0;
 }

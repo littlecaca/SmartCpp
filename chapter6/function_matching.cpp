@@ -73,14 +73,6 @@ int main(int argc, char const *argv[])
 }
 
 
-
-
-
-
-
-
-
-
 int f(int i, int j) {
     return i * j;
 }
@@ -88,3 +80,5 @@ int f(int i, int j) {
 int f(double i, double j) {
     return static_cast<int>(i * j);
 }
+
+

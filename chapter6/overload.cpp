@@ -69,17 +69,59 @@ void test() {
     string &shorter = shorterString(s1, s2);
 }
 
-string read();
-void print(const string &);
-void print(double);
+string read() {
+    return "";
+}
+void print(const string &) {
+    ;
+}
+void print(double) {
+    ;
+}
+
+int print(int) {
+    return 1;
+}
 
 void fooBar(int ival)
 {
     bool read = false;  // new scope: hides the outer declaration of read
     // string s = read();  // error: read is a bool variable, not a function
     // bad pratice: usually it's a bad idea to declare functions at local scope
-    void print(int);
+    int print(int);
     // print("Value: ");   // error: print(const string &) is hidden
     print(ival);        // ok: print(int) is visible
     print(3.14);        // ok: calls print(int); print(double) is hidden
+}
+
+// the matching between declaration and definition
+
+// the top-level `const` doesn't influence the matching between declaration and definition  
+int f2(int rr[]);
+int f2(const int r[]) {
+    return 0;
+}
+
+// ok
+int f3(int *r);
+int f3(int r[]) {
+    return 0;
+}
+
+// ok
+int f4(int (*)(int));
+int f4(int (int)) {
+    return 0;
+}
+
+// ok
+int f5(int a[5]);
+int f5(int *a) {
+    return 0;
+}
+
+int main(int argc, char const *argv[])
+{
+    /* code */
+    return 0;
 }
