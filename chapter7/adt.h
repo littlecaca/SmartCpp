@@ -24,7 +24,7 @@ struct Sales_data {
     // constructor initializer list
 
     // the constructor initializer is a list of member names, each of which is
-    // followed by that member's initial valuee in parentheses (or inside curly
+    // followed by that member's initial value in parentheses (or inside curly
     // braces). Multiple member initializations are seperated by commas. when a
     // member is ommited from the constructor list, it is implicitly initialized
     // using the same process as is used by the synthesized default constructor.
@@ -53,5 +53,14 @@ struct Sales_data {
 Sales_data add(const Sales_data &, const Sales_data &);
 std::ostream &print(std::ostream &, const Sales_data &);
 std::istream &read(std::istream &, Sales_data &);
+
+// return the average price
+inline double Sales_data::avg_price() const {
+    if (units_sold) {
+        return revenue / units_sold;
+    } else {
+        return 0;
+    }
+}
 
 #endif

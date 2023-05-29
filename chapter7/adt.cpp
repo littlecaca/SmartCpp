@@ -1,4 +1,4 @@
-#include "adt.h"
+#include "access_specifiers.h"
 #include <iostream>
 #include <string>
 
@@ -78,14 +78,7 @@ using std::string;
  * that reside outside the class objects themselves.
  */
 
-// return the average price
-double Sales_data::avg_price() const {
-    if (units_sold) {
-        return revenue / units_sold;
-    } else {
-        return 0;
-    }
-}
+
 
 // defining a function to return "this" object
 Sales_data &Sales_data::combine(const Sales_data &rhs) {
