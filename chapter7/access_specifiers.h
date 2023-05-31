@@ -45,12 +45,12 @@ class Sales_data {
     // Sales_data(const std::string &s) : bookNo(s) {}
     
     // defines the default constructor as well as one that takes a string argument
-    Sales_data(std::string s = "") : bookNo(s) {}
+    explicit Sales_data(std::string s = "") : bookNo(s) {}
     Sales_data(const std::string &s, unsigned n, double p)
         : bookNo(s), units_sold(n), revenue(p * n) {}
     Sales_data(const std::string &s, unsigned n);
     Sales_data(int i, std::istream &is = std::cin) : Sales_data(is) {}
-    Sales_data(std::istream &is) {
+    explicit Sales_data(std::istream &is) {
         std::istream &read(std::istream &, Sales_data &);
         read(is, *this);
     }
