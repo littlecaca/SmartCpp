@@ -1,5 +1,11 @@
-#include "adt.h"
+#include <string>
 #include <iostream>
+// #include "adt.h"
+
+using std::cout;
+using std::cin;
+using std::endl;
+using std::string;
 
 /*
  * Constructors
@@ -33,3 +39,31 @@
 
 
 // defining a constructor outside the class body
+
+class Sales_data {
+  public:
+    Sales_data () {}
+    Sales_data (double p) {}
+    string bookNo = "you are";
+    double revenue = 4.6;
+    int units_sold = 7;
+};
+
+std::ostream &print(std::ostream &os, Sales_data const &i1) {
+    double price = i1.units_sold == 0 ? 0 : i1.revenue / i1.units_sold;
+    std::cout << "(" << i1.bookNo << ", "
+              << i1.revenue << ", " << i1.units_sold
+              << ")";
+    std::cout << " price = " << price;
+    return os;
+}
+
+int main(int argc, char const *argv[])
+{
+    Sales_data s1;
+    Sales_data s3(5.5);
+
+    print(cout, s1) << endl;
+    print(cout, s3) << endl;
+    return 0;
+}

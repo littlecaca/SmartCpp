@@ -62,6 +62,9 @@ int f(double, double);
 void manip(long);
 void manip(float);
 
+void manip(long i) {
+    i = 3;
+}
 int main(int argc, char const *argv[])
 {
     // the compiler will reject this call because it is ambiguous
@@ -69,6 +72,7 @@ int main(int argc, char const *argv[])
 
     // all arithmetic conversions are treated as equivalent to each other
     // manip(3.14); // error: ambiguous call
+    manip((long)5);
     return 0;
 }
 

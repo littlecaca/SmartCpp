@@ -26,6 +26,12 @@
  * Even if a const static data is initialized in the class body, that member ordinarily
  * should be defined outside the class definition.
  * 
+ * If the member is used only in contexts where the compiler can substitute the member's value,
+ * then an initialized const or constexpr static need not be separately defined. However, if
+ * we use the member in a context in which the value cannot be substitued, then there must
+ * be a definition for that member. For example, if we pass Account::period to a function that
+ * takes a const int &, then period must be defined.
+ * 
  * 
  * static Members Can Be Used in Ways Ordinary Members Can't
  * 

@@ -5,14 +5,14 @@ using std::string;
 
 /*
  * If we do not explicitly initialize a member in the constructor initializer list,
- * that member is default initialized before the constructor body starts executing.
+ * that member is synthesized default initialized before the constructor body starts executing.
  * 
- * We can often, but not always, ignore the distinction between whethera member is initialized
+ * We can often, but not always, ignore the distinction between whether a member is initialized
  * or assigned. Members that are const or references must be initailized. Similarly, members
  * that are of a class type that does not define a default constructor also must be initialized.
  * 
  * We must use the constructor initializer list to provide values for members that are const,
- * reference, or of a class type that does not have a defalut constructor.
+ * reference, or of a class type that does not have a default constructor.
  * 
  * 
  * In many classes, the distinction between initialization and assignment is strictly a matter of

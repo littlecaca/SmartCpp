@@ -74,7 +74,7 @@ using std::string;
  * 
  * Although the compiler will synthesize the copy, assignment, and destruction operation
  * for us, for some classes the default version do not work correctly. In particular, the 
- * synthesized versions are unlikely to work correctly for classes tht allocate resources
+ * synthesized versions are unlikely to work correctly for classes that allocate resources
  * that reside outside the class objects themselves.
  */
 

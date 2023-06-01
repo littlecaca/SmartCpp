@@ -32,7 +32,7 @@
  * the bug are localized: Only code that is part of the implementation could be responsible for the error.
  * 
  * Although user code need not change when a class definition changes, the source files that use a class
- * must be recompiled any time the class changes.(???)
+ * must be recompiled any time the class changes.
  */
 
 class Sales_data {
