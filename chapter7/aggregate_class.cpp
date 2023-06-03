@@ -21,7 +21,7 @@ struct Data {
 
 int main(int argc, char const *argv[])
 {
-    // initialize the data members of an aggregate class by providing a braced list of member initializers
+    // we can initialize the data members of an aggregate class by providing a braced list of member initializers
     // the initializers must appear in declaration order of the data members
     // if the initializers are less than the members it contains, the trailing members are value initialized
     // the list of initializers must not contain more elements than the class has members

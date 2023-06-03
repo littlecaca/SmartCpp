@@ -91,8 +91,7 @@ Sales_data &Sales_data::combine(const Sales_data &rhs) {
 // by reference. Moreover, reading or writing to a stream changes that stream, so
 // both functions take ordinary references, not references to const
 std::istream &read(std::istream &is, Sales_data &i1) {
-    std::cout << "Please input bookno, revenue, units_sold:" << std::endl;
-    std::cin >> i1.bookNo >> i1.revenue >> i1.units_sold;
+    is >> i1.bookNo >> i1.units_sold >> i1.revenue;
     return is;
 }
 
@@ -100,10 +99,10 @@ std::istream &read(std::istream &is, Sales_data &i1) {
 // do minimal formatting. That way user code can decide whether the newline is needed
 std::ostream &print(std::ostream &os, Sales_data const &i1) {
     double price = i1.units_sold == 0 ? 0 : i1.revenue / i1.units_sold;
-    std::cout << "(" << i1.bookNo << ", "
+    os << "(" << i1.bookNo << ", "
               << i1.revenue << ", " << i1.units_sold
               << ")";
-    std::cout << " price = " << price;
+    os << " price = " << price;
     return os;
 }
 
