@@ -115,6 +115,7 @@ void process_int(istream &is) {
 
 int main(int argc, char const *argv[])
 {
+
     cout.eof();
     cout.fail();
     cout.bad();
