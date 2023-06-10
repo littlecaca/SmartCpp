@@ -19,8 +19,8 @@ using std::endl;
  *      3. If a data member has an in-class initializer, the initializer for a member of
  *         built-in type must be a constant expression, or if the member has class type,
  *         the initializer must use the member's own constexpr constructor. 
- * 		   A constexpr constructor must initialize every data member. The initializers must
- * 		   either use a constexpr constructor (constructor list initializer) 
+ * 		     A constexpr constructor must initialize every data member. The initializers must
+ * 		     either use a constexpr constructor (constructor list initializer) 
  *         or be a constant expression (in-class initializer).
  *      4. The class must use default definition for its destructor.
  * 
@@ -31,7 +31,7 @@ using std::endl;
  * A constexpr constructor can be declared as = default (or as deleted function). Otherwise,
  * a constexpr constructor must meet the requirements of a constructor--meaning it can have
  * no return statement--and of a constexpr function--meaning the only executable statement it
- * can have is a return statement. As a result, the body of a constexpr constructor is typically empty.
+ * can have is a return statement. As a result, the  * body of a constexpr constructor is typically empty.
  */
 
 

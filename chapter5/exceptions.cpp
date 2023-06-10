@@ -25,7 +25,7 @@ int main(int argc, char const *argv[])
     /*
      * We can create, copy, and assign objects of any of the exception types. 
      * We can only default initialze `exception`, `bad_alloc`, and `bad_cast` objects.
-     * The other exceptions have the opposite hehavior: we cam initialze those objects
+     * The other exceptions have the opposite hehavior: we can initialze those objects
      * from either a string or a C-style string.
      */
     return 0;

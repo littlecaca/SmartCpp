@@ -131,7 +131,7 @@ using std::endl;
  * , not including associative containers)
  * 
  * C seq(n, t)
- * C seq(b)
+ * C seq(n)
  * 
  * If the element type does not have a default constructor, then we must specify an explicit
  * element intializer along with the size.

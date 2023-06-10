@@ -44,7 +44,7 @@ iostream::iostate state[4] = {iostream::badbit, iostream::failbit, iostream::eof
 
 
 /*
- * Relatoinships among the IO Classes
+ * Relationships among the IO Classes
  * 
  * The ifstream and istringstream inherits the istream, and so ofstream, ostringstream, ostream.
  * Everything that we cover in the section applies equally to plain streams, file streams, and string streams
