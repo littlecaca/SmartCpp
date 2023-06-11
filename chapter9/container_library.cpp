@@ -128,7 +128,7 @@ using std::endl;
  * 
  * 
  * Sequential Container Size-Related Constructors (only supported for sequential containers
- * , not including associative containers)
+ * , not including associative containers, and arrays)
  * 
  * C seq(n, t)
  * C seq(n)
