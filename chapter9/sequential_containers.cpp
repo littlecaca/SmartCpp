@@ -80,5 +80,7 @@ int main(int argc, char const *argv[])
     }
     cout << d1.size() << endl;
 
+    vector<int> vi;
+    
     return 0;
 }
