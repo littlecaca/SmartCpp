@@ -97,12 +97,13 @@ std::istream &read(std::istream &is, Sales_data &i1) {
 
 // the print function does not print newline, the function that do output should
 // do minimal formatting. That way user code can decide whether the newline is needed
-std::ostream &print(std::ostream &os, Sales_data const &i1) {
+std::ostream &print(std::ostream &os, Sales_data const &i1, std::string end) {
     double price = i1.units_sold == 0 ? 0 : i1.revenue / i1.units_sold;
     os << "(" << i1.bookNo << ", "
               << i1.revenue << ", " << i1.units_sold
               << ")";
     os << " price = " << price;
+    os << end;
     return os;
 }
 

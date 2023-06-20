@@ -161,7 +161,9 @@ int main(int argc, char const *argv[])
     cout << std::stoi(numstr2, &p) << endl;
     cout << p << endl;
 
-
+    auto sp = s3.c_str();
+    s3.append("aha");
+    cout << sp << endl;
     
     return 0;
 }

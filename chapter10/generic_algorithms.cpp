@@ -9,11 +9,15 @@ using std::cout;
 using std::endl;
 using std::string;
 using std::vector;
-using std::back_inserter;
+
+// iterator
+using std::back_inserter;   
+
+// numeric
+using std::accumulate;
 
 // algorithms
 using std::find;
-using std::accumulate;
 using std::fill;
 using std::fill_n;
 using std::sort;

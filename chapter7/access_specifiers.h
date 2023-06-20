@@ -37,7 +37,7 @@
 
 class Sales_data {
     friend Sales_data add(const Sales_data &, const Sales_data &);
-    friend std::ostream &print(std::ostream &, const Sales_data &);
+    friend std::ostream &print(std::ostream &, const Sales_data &, std::string end);
     friend std::istream &read(std::istream &, Sales_data &);
 
   public:
@@ -66,7 +66,7 @@ class Sales_data {
 };
 
 Sales_data add(const Sales_data &, const Sales_data &);
-std::ostream &print(std::ostream &, const Sales_data &);
+std::ostream &print(std::ostream &, const Sales_data &, std::string end = "");
 std::istream &read(std::istream &, Sales_data &);
 
 #endif

@@ -1,5 +1,6 @@
 #include <sstream>
 #include <iostream>
+#include <vector>
 #include <string>
 
 using std::stringstream;
@@ -27,5 +28,6 @@ int main(int argc, char const *argv[])
     while (getline(strm, line)) {
         cout << line << endl;
     }
+
     return 0;
 }

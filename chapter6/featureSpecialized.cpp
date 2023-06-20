@@ -11,8 +11,8 @@ using std::endl;
  * Default Arguments
  *
  * The rules is like python. Part of the work of designing a function with default arguments is
- * ordering the parameters so that those least likely to use a default value appear first adn those
- * most likely to use a default appear first.
+ * ordering the parameters so that those least likely to use a default value appear first and those
+ * most likely to use a default appear last.
  * 
  * 
  * Default Argument Declarations
@@ -146,9 +146,12 @@ constexpr size_t scale(size_t cnt) { return new_sz() * cnt; }
 
 // the compiler will replace the call to scale with the resulting value
 int arr[scale(2)];
-int i = 2;
+// int i = 2;
 // int a2[scale(i)];   // error: scale(i) is not a constant expression
 
+int func(int i, const string &s = "") {
+    cout << i << " " << s << endl;
+}
 
 int main(int argc, char const *argv[])
 {
@@ -160,6 +163,8 @@ int main(int argc, char const *argv[])
     cerr << __func__ << endl;
     #endif
     cout << window << endl;
+
+    func(2);
     return 0;
 }
 
@@ -170,3 +175,4 @@ int cal(int i) {
 // this is not allowed in C, because cal(3) is not constant expression
 // but it's ok in C++! 
 int j = cal(3);
+
