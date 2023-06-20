@@ -29,7 +29,9 @@ using std::endl;
  * s.insert(pos, n, c);     Versions taking an index rather than iterator return a reference to s.
  * s.erase(pos, n);         Remove n characters starting at position pos. If n is omitted, removes until the end.
  *                          Return a reference to s.
- * s.assign(cp, n);         Return a reference to s.
+ * s.assign(cp, n); 
+ * 
+ *         Return a reference to s.
  * s.insert(pos, cp);
  * 
  * We can also specify the characters to insert or assign as coming from another string or substring thereof.

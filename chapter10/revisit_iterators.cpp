@@ -63,7 +63,10 @@ using namespace std;
  * 
  * Reverse iterators
  * 
- * reverse_iterator.base()  get the ordinary iterator corresponding to the reverse iterator
+ * reverse_iterator.base()  get the ordinary iterator corresponding to the reverse iterator,
+ *                          but they refer to different elements. These differences are need 
+ *                          to ensure that the range of elements, whether processed forward or
+ *                          backword, is the same.
  * 
  * 
  * Move iterators
