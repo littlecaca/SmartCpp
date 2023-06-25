@@ -65,6 +65,11 @@ class Sales_data {
     double revenue = 0.0;
 };
 
+// +-------------------+
+// |  plain functions  |
+// +-------------------+
+
+bool compareIsbn(const Sales_data &, const Sales_data &);
 Sales_data add(const Sales_data &, const Sales_data &);
 std::ostream &print(std::ostream &, const Sales_data &, std::string end = "");
 std::istream &read(std::istream &, Sales_data &);

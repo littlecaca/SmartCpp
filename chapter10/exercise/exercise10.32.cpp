@@ -39,8 +39,8 @@ int main(int argc, char const *argv[])
     for (auto iter = vtrans.begin(), last = vtrans.end();
          iter != last; ) {
         auto edge = find_if_not(iter, last, bind(compareIsbn, _1, *iter));
-        auto sum = accumulate(++iter, edge, *iter, [](Sales_data &s1, const Sales_data &s2) -> Sales_data &
-                    { s1.combine(s2); return s1; });
+        auto sum = accumulate(++iter, edge, *iter, [](Sales_data &s1, const Sales_data &s2)
+                    { return s1.combine(s2); });
         print(cout, sum) << endl;
         iter = edge;
     }

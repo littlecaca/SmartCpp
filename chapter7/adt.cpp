@@ -112,3 +112,7 @@ Sales_data add(const Sales_data &lhs, const Sales_data &rhs) {
     sum.combine(rhs);
     return sum;
 }
+
+bool compareIsbn(const Sales_data &s1, const Sales_data &s2) {
+    return s1.isbn() < s2.isbn();
+}
