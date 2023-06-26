@@ -1,3 +1,4 @@
+#include <utility>
 #include <algorithm>
 #include <set>
 #include <sstream>
@@ -56,21 +57,38 @@ using namespace std;
  * Using a Comparision Function for the Key Type
  * 
  * 
+ * The pair Type (defined in hte utility header)
  * 
+ * The default pair constructor value initializes the data memnbers.
+ * The data members of pair are public. These members are named first and second.
+ * 
+ * Operations on paris
+ * 
+ * pair<T1, T2> p;
+ * pair<T1, T2> p(v1, v2);
+ * pair<T1, T2> p = {v1, v2};
+ * 
+ * make_pair(v1, v2);
+ * p.first
+ * p.second
+ * p1 relop p2      Relational operators are defined as dictionary ordering. 
+ * 
+ * p1 == p2
+ * p1 != p2
+ * 
+ * Under the new standard we can list initialize the return value.
  * 
  */
 
 int main(int argc, char const *argv[])
 {
     // using a map
-
     map<string, size_t> word_count;
     istringstream is("this Is, is an is, good thing good");
     string word;
 
     
     // using a set
-
     set<string> exclude = {"the", "is", "a"};
 
     while (is >> word) {
@@ -105,5 +123,30 @@ int main(int argc, char const *argv[])
     multimap<Sales_data, size_t, decltype(compareIsbn) *>
         bookrank(compareIsbn);
     
+    // creates a pair
+    pair<string, string> author{"James", "Joyce"};
+    pair<string, int> rank1{"2", 1};
+    pair<string, int> rank2{"1", 2};
+
+    cout << "rank1";
+    if (rank1 < rank2) 
+        cout << " < ";
+    else if(rank1 > rank2)
+        cout << " > ";
+    else
+        cout << " == ";
+    cout << "rank2" << endl;
+    // cout << rank.second << endl;
+
     return 0;
+}
+
+
+pair<string, int>
+process(vector<string> &v) {
+    if (!v.empty()) {
+        return {v.back(), v.back().size()};
+    } else {
+        return pair<string, int> ();
+    }
 }
