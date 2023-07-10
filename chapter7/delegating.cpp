@@ -29,7 +29,7 @@ class Sales_data {
     double revenue = 0.0;
 };
 
-std::istream &read(std::istream &, Sales_data &);
+std::istream &read(std::istream &, Sales_data &) {}
 
 
 int main(int argc, char const *argv[])
