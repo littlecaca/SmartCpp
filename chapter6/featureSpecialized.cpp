@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cassert>
 
 using std::string;
 using std::cout;
@@ -43,11 +44,20 @@ using std::endl;
  * constexpr Functions
  * 
  * A constexpr function is a function that can be used in a constant expression. A constexpr
- * function is defined like any other function but must meet certain restrictions: The return type
+ * function is defined like any other function but must meet certain restrictions(C++11): The return type
  * and the type of each argument must be a literal type, and the function body must contain exactly
- * one return statement.
+ * one return statement. You can use ternary operator and recursion to make powerful constexpr function.
  * 
- * The compiler will replace a call to a constexpr function with its resulting value. A constexpr 
+ * In C++14, the constexpr functions behave almost like ordinary functions, they can have:
+ * 1. conditional jump instructions or loop instructions.
+ * 2. more than one instruction.
+ * 3. constexpr functions.
+ * 4. fundamental data types (literal types) that have to be initialized with a constant expression.
+ * 
+ * In C++14, the constexpr functions are mostly like `pure functions` in functional programming paradigm.
+ * 
+ * The compiler will replace a call to a constexpr function with its resulting value if you take 
+ * the return value as a constant expression, otherwise, it will be executed at runtime. A constexpr 
  * function body may contain other statements so long as those statements generate no actions at
  * run time. Those statements contain null statements, type alias, and using declarations.
  * 
@@ -55,6 +65,8 @@ using std::endl;
  * 
  * The compiler will produce an error messge if we use a constexpr function that does not return 
  * constant expression where a constant expression is needed.
+ * 
+ * The constexpr function is implicitly inline.
  * 
  * 
  * Put inline and constexpr Functions in Header Files

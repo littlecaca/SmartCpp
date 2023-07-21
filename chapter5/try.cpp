@@ -7,6 +7,7 @@ using std::cin;
 using std::endl;
 using std::string;
 using std::runtime_error;
+using std::logic_error;
 
 bool addItem(string &item1, string &item2) {
     if (item1 != item2)

@@ -119,7 +119,7 @@ int main(int argc, char const *argv[])
     multiset<Sales_data, bool (*)(const Sales_data &, const Sales_data &)>
         bookstore(compareIsbn);
     
-    // or we can use decltype, we must add * to indicate that we're using apointer to the given function type.
+    // or we can use decltype, we must add * to indicate that we're using a pointer to the given function type.
     multimap<Sales_data, size_t, decltype(compareIsbn) *>
         bookrank(compareIsbn);
     
