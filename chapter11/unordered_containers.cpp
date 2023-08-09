@@ -89,9 +89,6 @@ int main(int argc, char const *argv[])
     
     // only select our own hash function
     using SH_multiset = unordered_set<string, decltype(hasher) *>;
-    
 
-
-    
     return 0;
 }
