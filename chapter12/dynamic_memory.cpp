@@ -52,8 +52,8 @@ using std::nothrow;
  * p->mem
  * p.get()              Returns the pointer in p. The object to which the
  *                      returned pointer points will disappear when the smart
- * pointer deletes it. 
- * 
+ *                      pointer deletes it.
+ *
  * swap(p, q) p.swap(q)
  *
  *
@@ -61,19 +61,19 @@ using std::nothrow;
  *
  * make_shared<T> (args)    Returns a shared_ptr pointing to a dynamically
  *                          allocated object of type T. Uses args to initialize
- * that obejct. share_ptr<T>
+ *                          that obejct.
  *
- * p(q)                     p is a copy of the shared_ptr q; increments the
- * count in q. The pointer in q must be convertible to T*. p = q Decrements p's
- * reference count and increments q's count; deletes p's existing memory if p's
- * count goes to 0.
+ * share_ptr<T> p(q)        p is a copy of the shared_ptr q; increments the
+ *                          count in q. The pointer in q must be convertible to
+ *                          T*. p = q Decrements p's reference count and increments q's count; deletes
+ *                          p's existing memory if p's count goes to 0.
  *
  * p.unique()               Returns true if p.use_count() is one; false
- * otherwise.
+ *                          otherwise.
  *
  * p.use_count()            Returns the number of
  *                          objects sharing with p; may be a slow operation,
- * intended primarily for debugging purposes.
+ *                          intended primarily for debugging purposes.
  *
  *
  *
@@ -160,23 +160,23 @@ using std::nothrow;
  * We can also initialize a smart pointer from a pointer returned by new.
  *
  * shared_ptr<T> p(q)       q must point to memory allocated by new and must be
- * convertible to T* 
- * 
+ *                          convertible to T*
+ *
  * shared_ptr<T> p(u)       p assumes ownership from the
- * unique_ptr u; makes u null 
- * 
+ *                          unique_ptr u; makes u null
+ *
  * shared_ptr<T> p(q, d)    p will use the callable
- * object d in place of delete to free q. 
- * 
+ * object d in place of delete to free q.
+ *
  * shared_ptr<T> p(p2, d)   p is a copy
  * of the shared_ptr p2 except that p uses the callable object d in place of
  * delete.
  *
  * p.reset()                If p is the only shared_ptr pointing at its obejct,
- * frees p's existing object. Makes p null. 
- * 
- * p.reset(q)               Makes p point to q. 
- * 
+ * frees p's existing object. Makes p null.
+ *
+ * p.reset(q)               Makes p point to q.
+ *
  * p.reset(q, d)            Calls d to free q otherwise uses delete
  * to free q.
  *
@@ -221,7 +221,7 @@ using std::nothrow;
  */
 
 typedef int destination;
-typedef int * connection;
+typedef int *connection;
 
 int main(int argc, char const *argv[]) {
     // define a shared_ptr class that can point at a string
@@ -309,15 +309,14 @@ int main(int argc, char const *argv[]) {
         // when f exits even if by an exception, the connection will be
         // properly closed
     }
-    
+
     // If reset() takes no arguments, it will make itself null.
     pi4.reset();
     if (pi4 == nullptr)
         cout << "pi4 is nullptr" << endl;
-    else 
+    else
         cout << "pi4 is not!" << endl;
 
-        
     pi4 = nullptr;
     pi4.reset(new int(43));
     cout << *pi4 << endl;
@@ -360,8 +359,6 @@ void test3() {
 }
 
 void process(shared_ptr<int> ptr) {}
-
-
 
 connection connect(destination &) { return new int(1); }
 void dis_connect(destination &) {}

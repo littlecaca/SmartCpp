@@ -31,7 +31,7 @@ using std::shared_ptr;
  * w.use_count()
  * w.expired()      Returns true if w.use_count() is zero, false otherwise.
  * w.lock()         If expired is true, returns a null shared_ptr; otherwise
- *              
+ *              	returns a shared_ptr to the object to which w points.
  * 
  * 
  */
@@ -46,6 +46,7 @@ int main(int argc, char const *argv[])
 	if (auto np = wp.lock()) {
 		// inside the if, np shares its object with sp
 	}
+	
 	
 	return 0;
 }
