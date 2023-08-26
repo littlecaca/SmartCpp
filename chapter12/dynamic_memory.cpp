@@ -166,19 +166,19 @@ using std::nothrow;
  *                          unique_ptr u; makes u null
  *
  * shared_ptr<T> p(q, d)    p will use the callable
- * object d in place of delete to free q.
+ *                          object d in place of delete to free q.
  *
  * shared_ptr<T> p(p2, d)   p is a copy
- * of the shared_ptr p2 except that p uses the callable object d in place of
- * delete.
+ *                          of the shared_ptr p2 except that p uses the callable object d in place of
+ *                          delete.
  *
  * p.reset()                If p is the only shared_ptr pointing at its obejct,
- * frees p's existing object. Makes p null.
+ *                          frees p's existing object. Makes p null.
  *
  * p.reset(q)               Makes p point to q.
  *
  * p.reset(q, d)            Calls d to free q otherwise uses delete
- * to free q.
+ *                          to free q.
  *
  * The smart pointer constructors that take pointers are explicit.
  * Hence, we must use the direct form of initialization to initialze a smart

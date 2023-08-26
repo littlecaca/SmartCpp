@@ -24,7 +24,7 @@ using std::vector;
  * 
  * u.reset()                Deletes the object to which u points; Makes u null
  * u.reset(q)               Makes u point to that object.
- * u.reset(nullptr)         Equivalent to u.reset.
+ * u.reset(nullptr)         Equivalent to u.reset().
  * 
  * 
  * There is no library function comparable to

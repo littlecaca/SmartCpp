@@ -34,6 +34,7 @@ class StrBlob {
     const std::string &back() const;
     std::string &front();
     std::string &back();
+    std::string &get(size_type index) const;
 
   private:
     std::shared_ptr<std::vector<std::string>> data;
@@ -74,6 +75,11 @@ std::string &StrBlob::back() {
 void StrBlob::pop_back() {
     check(0, "pop_back on empty StrBlob");
     data->pop_back();
+}
+
+std::string &StrBlob::get(StrBlob::size_type index) const {
+    check(index, "index out of range");
+    return data->at(index);
 }
 
 //      +-------------------------+

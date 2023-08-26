@@ -1,3 +1,4 @@
+#include "../Blob.h"
 #include <algorithm>
 #include <fstream>
 #include <iostream>
@@ -50,11 +51,11 @@ class TextQuery {
     QueryResult query(const string &key) const;
 
   private:
-    shared_ptr<vector<string>> file;
+    shared_ptr<StrBlob> file;
     map<string, shared_ptr<set<line_no>>> wm;
 };
 
-TextQuery::TextQuery(ifstream &infile) : file(new vector<string>) {
+TextQuery::TextQuery(ifstream &infile) : file(new StrBlob) {
     string text;
     while (getline(infile, text)) {
         file->push_back(text);
@@ -76,18 +77,13 @@ class QueryResult {
 
   public:
     QueryResult(string s, shared_ptr<set<TextQuery::line_no>> p,
-                shared_ptr<vector<string>> f)
+                shared_ptr<StrBlob> f)
         : sought(s), lines(p), file(f) {}
-	
-	set<TextQuery::line_no>::iterator begin() { return lines->begin(); }
-	set<TextQuery::line_no>::iterator end() { return lines->end(); }
-	shared_ptr<vector<string>> &get_file() { return file; }
-
 
   private:
     string sought;
     shared_ptr<set<TextQuery::line_no>> lines;
-    shared_ptr<vector<string>> file;
+    shared_ptr<StrBlob> file;
 };
 
 QueryResult TextQuery::query(const string &key) const {
@@ -108,7 +104,7 @@ ostream &print(ostream &os, const QueryResult &qr) {
     os << qr.sought << " occurs " << qr.lines->size() << " "
        << make_plural(qr.lines->size(), "time", "s") << endl;
     for (auto num : *qr.lines)
-        os << "\t(line " << num + 1 << ") " << *(qr.file->begin() + num)
+        os << "\t(line " << num + 1 << ") " << qr.file->get(num)
            << endl;
     return os;
 }
@@ -126,9 +122,11 @@ void run_queries(ifstream &infile) {
 
 int main(int argc, char const *argv[])
 {
-	ifstream infile("exercise/input.txt");
-	if (!infile.is_open()) 
+	ifstream infile("input.txt");
+	if (!infile.is_open()) {
 		cout << "can not open the input file" << endl;
+        return -1;
+    }
 	run_queries(infile);
 	return 0;
 }
