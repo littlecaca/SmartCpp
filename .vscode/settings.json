@@ -46,6 +46,12 @@
         "streambuf": "cpp",
         "typeinfo": "cpp",
         "sstream": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "set": "cpp",
+        "unordered_set": "cpp",
+        "fstream": "cpp",
+        "cinttypes": "cpp"
     }
 }

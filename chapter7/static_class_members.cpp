@@ -30,7 +30,7 @@
  * then an initialized const or constexpr static need not be separately defined. However, if
  * we use the member in a context in which the value cannot be substitued, then there must
  * be a definition for that member. For example, if we pass Account::period to a function that
- * takes a const int &, then period must be defined.
+ * takes a int & (but not const int &), then period must be defined.
  * 
  * 
  * static Members Can Be Used in Ways Ordinary Members Can't

@@ -32,7 +32,8 @@ using std::vector;
  * we bind it to a pointer returned by new.
  * 
  * Because a unique_ptr owns the object to which it points, unique_ptr
- * does not support ordinary copy or assignment.
+ * does not support ordinary copy or assignment. There is one exception:
+ * We can copy or assign an unique_ptr that is about to be destroyed.
  * 
  * A dangerous scenario leading to memory leak is:
  * p.release();
