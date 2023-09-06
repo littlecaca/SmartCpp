@@ -55,7 +55,7 @@ using namespace std;
  * 
  * The implementation is permitted to delay reading the stream util we use the iterator.
  * 
- * An ostream_iterator can defined for any type that has an output operator.
+ * An ostream_iterator can be defined for any type that has an output operator.
  * Each time we assign a value to out_iter, the write is committed.
  * 
  * Using Stream Iterators with Class Types
@@ -64,12 +64,13 @@ using namespace std;
  * Reverse iterators
  * 
  * reverse_iterator.base()  get the ordinary iterator corresponding to the reverse iterator,
- *                          but they refer to different elements. These differences are need 
+ *                          but they refer to different elements. These differences are needed
  *                          to ensure that the range of elements, whether processed forward or
  *                          backword, is the same.
  * 
  * 
  * Move iterators
+ * 
  */
 
 

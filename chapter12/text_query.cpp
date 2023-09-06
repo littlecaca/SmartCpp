@@ -126,9 +126,18 @@ void run_queries(ifstream &infile) {
 
 int main(int argc, char const *argv[])
 {
-	ifstream infile("exercise/input.txt");
-	if (!infile.is_open()) 
-		cout << "can not open the input file" << endl;
-	run_queries(infile);
+	// ifstream infile("exercise/input.txt");
+	// if (!infile.is_open()) 
+	// 	cout << "can not open the input file" << endl;
+	// run_queries(infile);
+
+    ifstream infile("exercise/input.txt");
+	TextQuery tq(infile);
+    TextQuery tq2(tq);
+    tq2 = tq;
+
+    print(cout, tq.query("found")) << endl;
+    print(cout, tq2.query("found")) << endl;
+    
 	return 0;
 }

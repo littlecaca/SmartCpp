@@ -8,6 +8,8 @@ class Employee {
     std::string name;
     const u_int64_t serial;
 
+    Employee(const Employee &e) : name(e.name), serial(gen_serial()) {}
+
 
   private:
     static u_int64_t generator;
@@ -25,5 +27,8 @@ int main(int argc, char const *argv[]) {
               << std::endl << e4.name << ": " << e4.serial
               << std::endl << e5.name << ": " << e5.serial
               << std::endl;
+    
+    Employee e6(e4);
+    std::cout << e6.name << ": " << e6.serial << std::endl;
     return 0;
 }

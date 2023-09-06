@@ -55,11 +55,12 @@
  * The Compiler Can Bypass the Copy Constructor
  *
  * The compiler is permitted to rewrite
- *      string null_book = "9-999-99999-9";
+ *      string null_book = "9-999-99999-9";   ( -> converting construct -> copy construct)
  * into
- *      string null_book("9-999-99999-9");
+ *      string null_book("9-999-99999-9");    ( -> converting construct)
  *
  * Remember that the compiler can omit calls to the copy constructor.
+ * (Because the converting constructors can unilaterally construct it.)
  * However, even if the compiler omits the call to the copy/move constructor.
  * the copy/move constructor must exist and must be accessible(e.g., not
  * private) at that point at the program.
@@ -160,7 +161,7 @@
  * 
  * Although we cannot define variables or members that have a deleted destructor,
  * we can dynamically allocate obejcts with a deleted destructor. However, we cannot
- * free them.
+ * free them. (using allocator class)
  * 
  * The Copy-Control Members May Be Synthesized as Deleted
  * 
@@ -185,7 +186,9 @@
  * 
  * To prevent copies by friends and members, we declare these members as private
  * but do not define them. An attempt to use an undefined member results in a link-time
- * failure. 
+ * failure.
+ * 
+ * 
  */
 
 class Sales_data {
@@ -244,7 +247,9 @@ class PrivateCopy {
     void test();
 
 };
+
 void test();
+
 int main(int argc, char const *argv[])
 {
 	DemoConstMember d1;
