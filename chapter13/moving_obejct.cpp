@@ -13,6 +13,7 @@ using std::allocator;
 using std::initializer_list;
 using std::for_each;
 using std::pair;
+using std::make_move_iterator;
 
 /*
  * Note
@@ -114,8 +115,69 @@ using std::pair;
  * 
  * Rvalues Are Moved, Lvalues Are Copied...
  * 
+ * ...But Rvalues Are Copied If There Is No Move Constructor
+ * 
+ * We can convert a Foo&& to const Foo&.
+ * 
+ * 
+ * 
+ * Copy-and-Swap Assigment Operators and Move
+ * 
+ * HasPtr &operator=(HasPtr rhs)
+ *      { swap(*this, rhs); return *this; }
+ * 
+ * This single assignment operator acts as both the copy-assignment
+ * and move-assignment operator.
+ * 
+ * 
+ * 
+ * Advice: Updating the Rule of Three
+ * 
+ * All five copy-control members should be thought of as a unit: 
+ * Ordinarily, if a class defines any of these operations, it 
+ * usually should define them all.
+ * 
+ * 
+ * Move Operations for the Message Class (as a example in example.cpp)
+ * 
+ * 
+ * Move Iterators
+ * 
+ * The new library defines a move iterator adaptor. Unlike other iterators,
+ * the dereference operator of a move iterator yields a rvalue reference.
+ * 
+ * make_move_iterator(<original iterator>)
+ * 
+ * 
+ * Advice: Don't Be Too Quick to Move
+ * 
+ * Judiciously used inside class code, move can offer significant performance
+ * benefits. Casually used in ordinary user code (as opposed to class implementation code),
+ * moving an object is more likely to lead to mysterious and hard-to-find bugs than
+ * to any improvement in the performance of the application.
+ * 
+ * Best Practices
+ * 
+ * Outside of class implementation code such as move constructors or
+ * move-assignment operators, use std::move only when you are certain
+ * that you need to do a move and that the move is guaranteed to be safe.
  * 
  */
+
+struct X
+{
+    int i;              // built-in types can be moved
+    std::string mem;    // string defines its own move operations
+};
+
+struct hasX
+{
+    X mem;              // X has synthesized move operations
+};
+
+
+X x, x2 = std::move(x);
+hasX hx, hx2 = std::move(hx);   // uses the synthesized move constructor
 
 
 class StrVec {
@@ -218,20 +280,21 @@ void StrVec::reallocate() {
     reallocate(size() ? size() * 2 : 1);
 }
 
+// Use the move iterators to substitute the for loop
 void StrVec::reallocate(size_t new_cap) {
     // Allocate space for twice as many as elements as the current size
     auto newcapacity = new_cap;
     // Allocate new memory
     auto newdata = alloc.allocate(newcapacity);
     // Move the data
-    auto dest = newdata;
-    auto elem = elements;
-    for (size_t i = 0; i != size(); ++i)
-        alloc.construct(dest++, std::move(*elem++));
+    auto last = uninitialized_copy(make_move_iterator(begin()), make_move_iterator(end()), newdata);
     
+    // for (size_t i = 0; i != size(); ++i)
+    //     alloc.construct(dest++, std::move(*elem++));
+
     free();
     elements = newdata;
-    first_free = dest;
+    first_free = last;
     cap = elements + newcapacity;
 }
 

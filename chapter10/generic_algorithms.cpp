@@ -114,6 +114,7 @@ void elimDups(vector<string> &words) {
 
 int main(int argc, char const *argv[])
 {
+    std::cout << argv[0] << std::endl;
     vector<string> v{"you", "are", "genius"};
 
     string sum1 = accumulate(v.cbegin(), v.cend(), string(""));
@@ -125,6 +126,7 @@ int main(int argc, char const *argv[])
     auto inserter = back_inserter(v);
     *inserter = "!!";
     *inserter = "Oh";
+    inserter = "sadII";
     // the increment and decrement operators is uneffective to back_inserter iterators.
     ++inserter;
     ++inserter;

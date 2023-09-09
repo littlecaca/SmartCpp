@@ -52,6 +52,8 @@
         "set": "cpp",
         "unordered_set": "cpp",
         "fstream": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "xmemory": "cpp",
+        "xutility": "cpp"
     }
 }

@@ -15,7 +15,7 @@
             "cwd": "${workspaceRoot}\\build",
             "environment": [],
             "console": "integratedTerminal",
-            
+            "preLaunchTask": "C/C++: cl.exe build the active file"
         },
         {
             "name": "(gdb) Launch",
