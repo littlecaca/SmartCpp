@@ -105,7 +105,7 @@ using namespace std::placeholders;
  * [=, reference_list]
  * 
  * We can also return a lambda from a function. If the functon returns a lambda,
- * that lambda must not contain regerence captures.
+ * that lambda must not contain reference captures.
  * 
  * Advice: Keep Your Lambda Captures Simple, 
  * If Possible Avoid Capturing Pointers or References
