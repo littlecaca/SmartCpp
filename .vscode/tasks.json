@@ -69,7 +69,7 @@
                 "/nologo",
                 "/Fe${fileBasenameNoExtension}.exe",
                 "${file}",
-                "/Wall"
+                
             ],
             "options": {
                 "cwd": "${workspaceFolder}\\build"

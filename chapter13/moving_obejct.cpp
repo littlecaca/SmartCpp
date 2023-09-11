@@ -162,6 +162,16 @@ using std::make_move_iterator;
  * move-assignment operators, use std::move only when you are certain
  * that you need to do a move and that the move is guaranteed to be safe.
  * 
+ * 
+ * Rvalue References and Member functions
+ * 
+ * Note
+ * Overloaded functions that distinguish between moving and copying a parameter
+ * typically have one version that takes a const T& and one that takes a T&&.
+ * 
+ * Note
+ * If a member function has a reference qualifier, all the versions of that
+ * member with the same parameter list must have reference qualifiers.
  */
 
 struct X
