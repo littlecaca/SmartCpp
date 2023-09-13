@@ -17,3 +17,15 @@ class Book {
     unsigned count;
 };
 
+// Input operator
+std::istream &operator>>(std::istream &is, Book &b);
+
+// Output operator
+std::ostream &operator<<(std::ostream &os, const Book &b);
+
+// Addition operator
+Book operator+(const Book &b1, const Book &b2);
+
+// Compare operator
+bool operator==(const Book &b1, const Book &b2);
+
