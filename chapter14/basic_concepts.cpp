@@ -60,7 +60,7 @@
  * 
  * For nonmember operator functions, the only requirements are that at
  * least one of the operands has a class type, and that both operands
- * can be converted (unambiguously) to string.
+ * can be converted (unambiguously) to that class.
  * 
  * 
  * 

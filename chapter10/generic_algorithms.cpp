@@ -136,7 +136,7 @@ int main(int argc, char const *argv[])
         cout << word << " ";
     }
     cout << endl;
-
+    
     return 0;
 }
 

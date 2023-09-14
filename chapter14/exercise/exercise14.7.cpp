@@ -4,6 +4,7 @@
 #include <vector>
 
 class Str {
+    friend bool operator==(const Str &, const Str &);
     friend std::ostream &operator<<(std::ostream &, const Str &);
 	char *elements;
 	char *first_free;
@@ -28,6 +29,14 @@ class Str {
 	// Move-assignment operator
 	Str &operator=(Str &&) noexcept;
 	~Str() { free(); }
+
+	// Subscript operator
+	char &operator[](size_t i) {
+		return elements[i];
+	}
+	const char &operator[](size_t i) const {
+		return elements[i];
+	}
 
 	char *begin() const { return elements; }
 	char *end() const { return first_free; }
@@ -153,6 +162,16 @@ std::ostream &operator<<(std::ostream &os, const Str &s) {
     return os;
 }
 
+// Equality Operator
+bool operator==(const Str &lhs, const Str &rhs) {
+    return lhs.elements == rhs.elements &&
+           lhs.first_free == rhs.first_free;
+}
+
+// Inequality Operator
+bool operator!=(const Str &lhs, const Str &rhs) {
+    return !(lhs == rhs);
+}
 
 int main(int argc, char const *argv[]) {
 	std::vector<Str> vs;

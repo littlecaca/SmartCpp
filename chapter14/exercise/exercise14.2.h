@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <exception>
 #include <iostream>
 #include <string>
@@ -49,11 +50,23 @@ struct Sales_data {
 	std::string bookNo;
 	unsigned units_sold = 0; // this is called `in-class initializer`
 	double revenue = 0.0;
+
+	// Compound assignment for addition
+	Sales_data &operator+=(const Sales_data &);
+
+	// Assign the ISBN
+	Sales_data &operator=(const std::string &ib);
 };
 
 // Input operator
 std::istream &operator>>(std::istream &is, Sales_data &s) {
 	is >> s.bookNo >> s.units_sold >> s.revenue;
+	if (std::find(s.bookNo.begin(), s.bookNo.end(), '-') == s.bookNo.end())
+		is.setstate(is.rdstate() | is.failbit);
+
+	if (!is)
+		s = Sales_data();
+
 	return is;
 }
 
@@ -66,21 +79,36 @@ std::ostream &operator<<(std::ostream &os, Sales_data &s) {
 	return os;
 }
 
+// Compound assignment for addition
+Sales_data &Sales_data::operator+=(const Sales_data &s) {
+	if (bookNo != s.bookNo)
+		throw std::runtime_error("Inconsistent bookNo");
+	units_sold += s.units_sold;
+	revenue += s.revenue;
+	return *this;
+}
+
 // Addition operator
 Sales_data operator+(const Sales_data &s1, const Sales_data &s2) {
-	if (s1.bookNo != s2.bookNo)
-		throw std::runtime_error("Inconsistent bookNo");
-	return Sales_data(s1.bookNo, s1.units_sold + s2.units_sold,
-					  s1.revenue + s2.revenue);
+	Sales_data sum = s1;
+	sum += s2;
+	return sum;
 }
+
 
 // return the average price
 inline double Sales_data::avg_price() const {
-	if (units_sold) {
+	if (units_sold)
 		return revenue / units_sold;
-	} else {
+	else
 		return 0;
-	}
 }
+
+// Assign a string to isbn
+Sales_data &Sales_data::operator=(const std::string &ib) {
+	bookNo = ib;
+	return *this;
+}
+
 
 #endif
