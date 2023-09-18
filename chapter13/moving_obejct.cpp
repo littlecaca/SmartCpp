@@ -236,23 +236,27 @@ class StrVec {
 	StrVec &operator=(initializer_list<string> il);
 };
 
+// Move Assignment Operator
 StrVec &StrVec::operator=(StrVec &&rhs) noexcept {
 	// Direct test for self-assignment
 	if (this != &rhs) {
 		free();
 		elements = rhs.elements;
-		first_free = rhs.elements;
+		first_free = rhs.first_free;
 		cap = rhs.cap;
 		// Leave rhs in a destructible state
 		rhs.elements = rhs.first_free = rhs.cap = nullptr;
 	}
+	std::cout << "Move Assignment Operator BingGo!" << std::endl;
 	return *this;
 }
 
+// Move Constructor
 StrVec::StrVec(StrVec &&s) noexcept
 	: elements(s.elements), first_free(s.first_free), cap(s.cap) {
 	// Leave s in a state in which it is safe to run the destructor
 	s.elements = s.first_free = s.cap = nullptr;
+	std::cout << "Move Constructor BingGo!" << std::endl;
 }
 
 StrVec::StrVec(const initializer_list<string> &il) {
@@ -285,17 +289,21 @@ void StrVec::free() {
 	}
 }
 
+// Copy Constructor
 StrVec::StrVec(const StrVec &sv) {
 	auto ps = alloc_n_copy(sv.elements, sv.first_free);
 	elements = ps.first;
 	first_free = cap = ps.second;
+	std::cout << "Copy Constructor BingGO!" << std::endl;
 }
 
+// Copy Assignment Operator
 StrVec &StrVec::operator=(const StrVec &rhs) {
 	auto ps = alloc_n_copy(rhs.elements, rhs.first_free);
 	free();
 	elements = ps.first;
 	first_free = cap = ps.second;
+	std::cout << "Copy Assignemnt Operator BingGo!" << std::endl;
 	return *this;
 }
 
@@ -382,13 +390,21 @@ StrVec &StrVec::operator=(initializer_list<string> il) {
 	return *this;
 }
 
-int main(int argc, char const *argv[]) {
+
+// Just for test
+StrVec genStrVec() {
 	StrVec sv{"new", "old", "mountain"};
-	StrVec sv2{"new", "old", "mountain", "sa"};
-	if (sv == sv2)
-		std::cout << "==";
-	else
-		std::cout << "!=";
+	return sv;
+}
+
+int main(int argc, char const *argv[]) {
+	// StrVec sv;
+	// sv = genStrVec();
+	StrVec sv2 = genStrVec();
+	
+	for (const auto &word : sv2) {
+		std::cout << word << " ";
+	}
 	std::cout << std::endl;
 	return 0;
 }

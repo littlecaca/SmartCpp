@@ -131,6 +131,10 @@ class StrBlobPtr {
     StrBlobPtr operator++(int);
     StrBlobPtr operator--(int);
 
+    // Dereference and Arrow operators
+    std::string &operator*();
+    std::string *operator->();
+
   private:
     std::shared_ptr<std::vector<std::string>> check(std::size_t,
                                                     const std::string &) const;
@@ -196,8 +200,25 @@ StrBlobPtr StrBlobPtr::operator--(int) {
 
 // Addition and Subtraction
 StrBlobPtr operator+(const StrBlobPtr &lhs, int rhs) {
-    
+    auto temp = lhs;
+    temp.curr += rhs;
+    return temp;
 }
-StrBlobPtr operator-(const StrBlobPtr &lhs, int rhs);
+
+StrBlobPtr operator-(const StrBlobPtr &lhs, int rhs) {
+    auto temp = lhs;
+    temp.curr -= rhs;
+    return temp;
+}
+
+// Dereference and Arrow Operators
+std::string &StrBlobPtr::operator*() {
+    auto p = check(curr, "out of range");
+    return (*p)[curr];
+}
+
+std::string *StrBlobPtr::operator->() {
+    return &operator*();
+}
 
 #endif
