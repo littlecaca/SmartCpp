@@ -72,5 +72,9 @@
         "xstring": "cpp",
         "xtr1common": "cpp",
         "xtree": "cpp"
-    }
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.formatting.provider": "none"
 }

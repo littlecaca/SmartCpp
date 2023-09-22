@@ -4,7 +4,13 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
+        {
+            "type": "java",
+            "name": "test",
+            "request": "launch",
+            "mainClass": "chapter15.test",
+            "projectName": "SmartCpp_840dab4"
+        },
         {
             "name": "(Windows) Launch",
             "type": "cppvsdbg",
@@ -21,7 +27,6 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-  
             "program": "${workspaceRoot}\\build\\${fileBasenameNoExtension}.exe",
             "linux": {
                 "name": "(gdb) Launch",
