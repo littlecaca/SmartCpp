@@ -68,8 +68,7 @@
                 "/EHsc",
                 "/nologo",
                 "/Fe${fileBasenameNoExtension}.exe",
-                "${file}",
-                
+                "${file}"
             ],
             "options": {
                 "cwd": "${workspaceFolder}\\build"
@@ -82,6 +81,6 @@
                 "isDefault": true
             },
             "detail": "compiler: cl.exe"
-        }
+        },
     ]
 }

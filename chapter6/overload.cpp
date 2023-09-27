@@ -44,7 +44,7 @@ int loopup(const int);        // error: redeclares
 // the compiler will prefer the nonconst version when we pass a nonconst object or pointer to nonconst
 int lookup(int *);
 int lookup(const int *);    // ok, new function
-
+std::string lookup(std::string &);
 
 // const_cast and overloading
 // using const_cast to get plain reference(or pointer) from functions that have const parameters

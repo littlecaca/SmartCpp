@@ -92,8 +92,23 @@
  * 
  * There Is No Implicit Conversion from Base to Derived
  * 
+ * If the base class has one or more virtual functions, we can use a
+ * dynamic_cast to request a conversion that is checked at run time.
+ * Alternatively, in those cases when we know that the conversion from
+ * base to derived is safe, we can use a static_cast to override the compiler.
  * 
- *
+ * ...and No Conversion between Objects
+ * 
+ * Because the copy-control members take references, the derived_to_base
+ * conversion lets us pass a derived object to a base_class copy/move operation.
+ * 
+ * Bulk_quote bulk;
+ * Quote item(bulk);
+ * item = bulk;
+ * 
+ * Because the Bulk_quote part is ignored, we say that the Bulk_quote portion of
+ * bulk is sliced down.
+ * 
  */
 
 // =========================================
