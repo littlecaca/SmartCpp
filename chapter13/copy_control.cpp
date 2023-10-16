@@ -179,10 +179,13 @@
  * desired.)
  *
  * 4.So does the synthesized default constructor. If the class has a member
- * with a deleted or inaccessible destructor or has a reference or const member
- * that does not have an
+ * with a deleted or inaccessible destructor or has a reference
+ * that does not have an in-class initializer; or has a const member whose 
+ * type does not explicitly define a default constructor and that member does
+ * not have an in-class initializer.
  *
  *
+ * 
  * private Copy Control
  *
  * To prevent copies by friends and members, we declare these members as private
@@ -272,7 +275,7 @@ int main(int argc, char const *argv[]) {
     // c.test();
 
 	// ok
-	Test t1 = 3;
+	  Test t1 = 3;
 	
 
     return 0;

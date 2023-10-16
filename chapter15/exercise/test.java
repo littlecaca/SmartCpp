@@ -5,6 +5,7 @@ class Base {
     void print_num() {
         System.out.println(num);
     }
+    public void test() {};
 }
 
 class Derived extends Base {
@@ -12,6 +13,8 @@ class Derived extends Base {
     Derived(int n) {
         num = n;
     }
+    // Can not reduce the visibility of the inherited method of Base
+    // private void test() {};
 }
 
 public class test {

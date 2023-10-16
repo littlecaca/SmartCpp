@@ -1,5 +1,29 @@
 #include <iostream>
 
+
+
+class Test
+{
+public:
+    Test(const std::initializer_list<int> &il)
+    {
+        std::cout << "initializer_list" << std::endl;
+    }
+    Test(int, const std::string &)
+    {
+        std::cout << "Test(int, const string &)" << std::endl;
+    }
+	Test(int, double)
+	{
+		std::cout << "Test(int, double)" << std::endl;
+	}
+	Test(int, int)
+	{
+        std::cout << "Test(int, int)" << std::endl;
+	}
+};
+
+
 int main(int argc, char const *argv[])
 {
 	/*
@@ -20,9 +44,14 @@ int main(int argc, char const *argv[])
 	 */
 
 	long double ld = 3.1415926;
-	int a{ld}, b = {ld};	// error: narrowing conversion required
+	// int a{ld}, b = {ld};	// error: narrowing conversion required
 	int c(ld), d = ld;		// ok: but value will be truncated
 
+	// Test the process of list initialization
+    Test t{1, "sad"};
+
+	// error, applied to initialier_list<int>, so leads to narrow converting
+	// Test t1{1, 2.0};	
 
 	return 0;
 }

@@ -1,3 +1,5 @@
+#include <iostream>
+
 /*
  * Name Lookup Happens at Compile Time
  *
@@ -51,11 +53,24 @@
  */
 
 class Base {
-  public:
-    int f() {};
-
+public:
+    virtual void f() { std::cout << "Base f()" << std::endl; };
+    void f(int) { std::cout << "Base f(int)" << std::endl; }
+    void f(int, int) { std::cout << "Base f(int, int)" << std::endl; }
 };
 
 class Derived : public Base {
+public:
     // int f() override {};
+    using Base::f;
+    void f() override { std::cout << "Derived f()" << std::endl; }
+  
 };
+
+int main(int argc, char const *argv[])
+{
+  Derived d;
+  d.f();
+  d.f(1, 1);
+  return 0;
+}

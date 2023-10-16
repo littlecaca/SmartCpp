@@ -8,12 +8,14 @@ class Media {
 class Picture : public Media {
   public:
     virtual char*get_content() = 0;
+    virtual void test() = 0;
   protected:
     std::string encode;
 };
 
 class Gif : public Picture {
-  public:
+  private:
+    void test() override;
     char *get_content() override final;
 };
 

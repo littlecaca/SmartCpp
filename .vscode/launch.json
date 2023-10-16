@@ -15,10 +15,10 @@
             "name": "(Windows) Launch",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${fileBasenameNoExtension}.exe",
+            "program": "${workspaceRoot}\\build\\${fileBasenameNoExtension}.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceRoot}\\build",
+            "cwd": "${fileDirname}",
             "environment": [],
             "console": "integratedTerminal",
             "preLaunchTask": "C/C++: cl.exe build the active file"
