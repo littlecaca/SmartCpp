@@ -60,8 +60,8 @@ using std::uninitialized_fill_n;
  *
  * unique_ptrs to Arrays
  *
- * unique_ptr<T[]> u            u can point to a dynamically allocated array of type
- * T. unique_ptr<T[]> u(p)      u points to the dynamically allocated array to
+ * unique_ptr<T[]> u            u can point to a dynamically allocated array of type T. 
+ * unique_ptr<T[]> u(p)         u points to the dynamically allocated array to
  *                              which the built-in pointer p points. p must be convertible to T*.
  *
  * u[i]                     Returns the object at position i in the array that u
@@ -90,10 +90,11 @@ using std::uninitialized_fill_n;
  * a.destroy(p)         Runs the destructor on the object pointed to by the T* pointer p.
  *
  * 
- * Warning: We must construct objects in order to use memory returned by allocate.
+ * Warning: 
+ * We must construct objects in order to use memory returned by allocate.
  * Using unconsturcted memory in other ways is undefined.
  * 
- *          We may destroy only elements that actually constructed.
+ * We may destroy only elements that actually constructed.
  * 
  * The pointer we pass to deallocate cannot be null; 
  * 

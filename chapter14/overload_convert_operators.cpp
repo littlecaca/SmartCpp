@@ -119,7 +119,9 @@
  * equally good. The rank of any standard conversions that might
  * or might not be required is not considered. Whether a built-in conversion
  * is also considered only if the overloaded set can be matched using 
- * the same conversion function.
+ * the same conversion function. (But in MSVC, the matching process is more
+ * accurate, it will consider both the user-defined conversion and the 
+ * subsequent conversions.)
  * 
  * 
  * 
@@ -159,8 +161,23 @@ class SmallInt {
 	// But each conversion function must return a value of its
 	// corresponding type.
 	operator int() const { return val; }
+	operator double() const { return float(val); }
 	SmallInt(const SmallInt &) = delete;
 	SmallInt &operator=(const SmallInt &) = delete;
+};
+
+
+
+void f1(int i) { std::cout << i << std::endl; }
+
+void f1(float f) { std::cout << f << std::endl; }
+
+class T1
+{
+public:
+	operator int() { return 1; }
+
+	operator double() { return 1.5; }
 };
 
 int main(int argc, char const *argv[])
@@ -168,10 +185,17 @@ int main(int argc, char const *argv[])
     SmallInt si{};
 	// SmallInt si2 = si;
 	SmallInt si3 = 4;	// copy elision
-	int i = si3 + 5;
-	double d = si3 + 3.14;
+	int i = si3;
+	// double d = si3 + 3.14;
 	std::cout << i << std::endl;
-	std::cout << d << std::endl;
+	// std::cout << d << std::endl;
+
+
+	// Overloaded Functions and User-Defined Conversion
+	T1 t1;
+	// f1(t1); In g++, this is not ok
 
     return 0;
 }
+
+

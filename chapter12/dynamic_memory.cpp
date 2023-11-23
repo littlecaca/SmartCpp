@@ -21,7 +21,7 @@ using std::nothrow;
  * Smart Pointers
  *
  * Smart pointers ensure that the objects to which they point
- * are automatically freed when it is appropriate to da so.
+ * are automatically freed when it is appropriate to do so.
  *
  * Programs use the heap for objects at run time. Out code must
  * explicitly destroy such objects when they are no longer needed.
@@ -54,7 +54,8 @@ using std::nothrow;
  *                      returned pointer points will disappear when the smart
  *                      pointer deletes it.
  *
- * swap(p, q) p.swap(q)
+ * swap(p, q) 
+ * p.swap(q)
  *
  *
  * Operations Specfic to shared_ptr

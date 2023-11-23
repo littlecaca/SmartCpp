@@ -8,7 +8,7 @@ using std::endl;
 /*
  * Unlike other classes, classes that are literal types may have function
  * members that are `constexpr`. (These member functions are implicitly
- * const.)[this is not true!]
+ * const.)[this does not mean you can omit the const keyword]
  *
  * In addition to the arithmetic types, references, and pointers, certain
  * classes are also literal types.
@@ -19,11 +19,11 @@ using std::endl;
  *      1. The data member all must have literal type.
  *      2. The class must have at least one constexpr constuctor.
  *      3. If a data member has an in-class initializer, the initializer for a
- * member of built-in type must be a constant expression, or if the member has
- * class type, the initializer must use the member's own constexpr constructor.
+ *         member of built-in type must be a constant expression, or if the member has
+ *         class type, the initializer must use the member's own constexpr constructor.
  * 		     [A constexpr constructor must initialize every data member. The
- * initializers must either use a constexpr constructor (constructor list
- * initializer) or be a constant expression (in-class initializer).]
+ *         initializers must either use a constexpr constructor (constructor list
+ *         initializer) or be a constant expression (in-class initializer).]
  *      4. The class must use default definition for its destructor.
  *
  * constexpr class can not call non-constexpr constructor
