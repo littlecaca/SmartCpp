@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <memory>
+
 
 // About the array, the C++ and C are consistent.
 

@@ -185,6 +185,9 @@ int main(int argc, char const *argv[])
 {
     /* code */
     deque<double> d1(10);
+    auto b1 = d1.begin();
+    auto b2 = b1 + 2;
+
     
     array<double, 3> a1;    // wow!!
 

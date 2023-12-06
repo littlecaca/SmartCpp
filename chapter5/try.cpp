@@ -45,7 +45,7 @@ int main(int argc, char const *argv[])
         try {
             if (addItem(item1, item2))
                 cout << "success" << endl;
-        } catch (runtime_error err) {
+        } catch (runtime_error &err) {
             // Each of the library exception classes defines a member function named what
             cout << err.what()
                  << "\nTry Again? Enter y or n" << endl;

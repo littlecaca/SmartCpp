@@ -11,31 +11,31 @@ template <typename T>
 class MyWeak
 {
 public:
-    MyWeak() : sp(nullptr) {}
-    MyWeak(const MyShared<T> &sha) : sp(&sha) {}
+    MyWeak() : tp(nullptr), counter(nullptr) {}
+    MyWeak(const MyShared<T> &sha) : tp(sha.tp), counter(sha.counter), deleter(sha.deleter) {
+        ++counter->count;
+    }
 
     MyShared<T> lock() const noexcept
     {
-        if (!expired())
+        if (expired())
             return MyShared<T> ();
-        return *sp;
+        return MyShared(tp, counter, deleter);
     }
 
     size_t use_count() const noexcept
     {
-        if (sp == nullptr)
-            return 0;
-        return sp->use_count();
+        return counter->ref_count;
     }
 
     bool expired() const noexcept
     {
-        return sp != nullptr && !*sp;
+        return !counter->ref_count;
     }
 
-    
-
 private:
-    const MyShared<T> *sp;
+    T *tp;
+    PointerCounter *counter;
+    std::function<void(T *)> deleter;
 };
 

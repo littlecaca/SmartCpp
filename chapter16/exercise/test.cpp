@@ -1,4 +1,7 @@
 #include <iostream>
+#include <memory>
+
+using namespace std;
 
 class Base
 {
@@ -36,6 +39,7 @@ int main(int argc, char const *argv[])
     static_cast<Derived *>(&b)->print();
     reinterpret_cast<Derived &>(const_cast<Base &>(bbb)).print();
     
+    shared_ptr<int> sp;
     // This is OK
     static_cast<Derived &>(d).print();
     return 0;

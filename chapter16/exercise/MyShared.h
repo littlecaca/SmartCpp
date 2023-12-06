@@ -3,27 +3,46 @@
 #include <memory>
 #include <functional>
 
+class PointerCounter
+{
+public:
+    PointerCounter() : ref_count(1), count(1) {}
+    int ref_count;
+    int count;
+};
+
+
 template <typename T>
 class MyShared
 {
 public:
-    MyShared() : tp(nullptr), cp(new size_t(1)), deleter(nullptr) {}
-    MyShared(const MyShared<T> &shared) : tp(shared.tp), cp(shared.cp), deleter(nullptr)
+
+    // Aggregation
+    MyShared() : tp(nullptr), counter(new PointerCounter), deleter(nullptr) {}
+    MyShared(const MyShared<T> &shared) : tp(shared.tp), counter(shared.counter), deleter(nullptr)
     {
-        ++(*cp);
+        ++counter->count;
+        ++counter->ref_count;
     }
     MyShared(T *p, const std::function<void(T *)> &dt = nullptr)
-        : tp(p), cp(new size_t(1)), deleter(dt) {}
+        : tp(p), counter(new PointerCounter), deleter(dt) {}
+    
+    MyShared(T *p, PointerCounter *ct , const std::function<void(T *)> &dt = nullptr)
+        : tp(p), counter(ct), deleter(dt) {
+            ++counter->count;
+            ++counter->ref_count;
+    }
 
     void swap(MyShared<T> &shared) noexcept
     {
         T *temp = tp;
-        size_t *temp_cp = cp;        auto temp_d = deleter;
+        PointerCounter *temp_c = counter;
+        auto temp_d = deleter;
         tp = shared.tp;
-        cp = shared.cp;
+        counter = shared.counter;
         deleter = shared.deleter;
         shared.tp = temp;
-        shared.cp = cp;
+        shared.counter = temp_c;
         shared.deleter = temp_d;
     }
 
@@ -38,7 +57,7 @@ public:
 
     ~MyShared<T>() noexcept
     {
-        if (!(--*cp))
+        if (!--counter->ref_count)
         {
             if (deleter != nullptr)
             {
@@ -48,13 +67,16 @@ public:
             {
                 delete tp;
             }
-            delete cp;
+        }
+        if (!--counter->count)
+        {
+            delete counter;
         }
     }
 
     size_t use_count() const noexcept
     {
-        return *cp;
+        return counter->ref_count;
     }
 
     T *get() const noexcept
@@ -97,8 +119,7 @@ public:
         return use_count() == 1;
     }
 
-private:
     T *tp;
-    size_t *cp;
+    PointerCounter *counter;
     std::function<void(T *)> deleter;
 };

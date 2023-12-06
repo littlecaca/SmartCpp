@@ -19,6 +19,7 @@ struct Person {
     std::string const &getAddress() const { return address; };
 };
 
+
 std::istream &read(std::istream &is, Person &np);
 std::ostream &print(std::ostream &os, Person const &p);
 
