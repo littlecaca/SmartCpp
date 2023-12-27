@@ -38,7 +38,7 @@
  * or "the argument is converted from an array or function type to the corresponding
  * pointer type." or "a top-level const is added to or discarded from the argument".
  * 
- * 2.Match through a const conversion.
+ * 2.Match through a (low-level) const conversion.
  * 
  * 3.Match through a promotion.
  * 

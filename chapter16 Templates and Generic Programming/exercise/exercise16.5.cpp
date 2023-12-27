@@ -2,7 +2,7 @@
 #include <iostream>
 
 template <typename Element, size_t Size>
-std::ostream &print(std::ostream &os, Element (&array)[Size])
+std::ostream &print(std::ostream &os, const Element (&array)[Size])
 {
     os << "(";
     for (size_t i = 0; i != Size; ++i)
