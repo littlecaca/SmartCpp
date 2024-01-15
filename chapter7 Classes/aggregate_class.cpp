@@ -27,7 +27,7 @@ int main(int argc, char const *argv[])
     // if the initializers are less than the members it contains, the trailing members are value initialized
     // the list of initializers must not contain more elements than the class has members
     Data val1 = {0, "Anna"};
-    Data val2 {};
+    Data val2 {1, "jlk"};
 
     
     return 0;

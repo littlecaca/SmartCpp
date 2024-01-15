@@ -38,6 +38,7 @@ class Derived : public Base
 {
 public:
     Derived() = default;
+    Derived(Derived &&) = default;
     Derived(const Derived &)
     {
         std::cout << "Derived copy constructor" << std::endl;
@@ -71,7 +72,7 @@ int main(int argc, char const *argv[])
     Foo f;
     // For gcc, the copy elision is mandatory, and the move operation will be ommitted.
     // But for msvs, this is an error, because the copy elision is not mandatory, 
-    // so the correpsonding copy or move constructor must exist.
+    // so the correpsonding copy or move constructor must not be deleted.
     // For move constructor, the implicitly-declared or defaulted deleted move constructor
     // will be undefined, so they will be ignored when executing overload resolution.
     Foo f2 = Foo();

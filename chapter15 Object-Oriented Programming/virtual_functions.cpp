@@ -92,7 +92,11 @@ class Base {
 };
 
 class Derived : public Base {
-
+    public:
+        void print() override 
+        {
+            std::cout << "I am from derived class" << std::endl;
+        }
 };
 
 void print_m(Base &b) {
@@ -109,5 +113,6 @@ int main(int argc, char const *argv[])
 {
     Derived d;
     print_m(d);
+    test(d);
     return 0;
 }

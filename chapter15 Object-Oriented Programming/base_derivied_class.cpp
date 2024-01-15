@@ -144,9 +144,10 @@ class Bulk_quote : public Quote {
     Bulk_quote() = default;
     Bulk_quote(const std::string &b, double p, std::size_t n, double disc)
     	: Quote(b, p), min_qty(n), discount(disc) {};
+
     double net_price(std::size_t n) const override {
-		return n < min_qty ? net_price(n) : net_price(n) * discount;
-	}
+		  return n < min_qty ? net_price(n) : net_price(n) * discount;
+	  }
 
   private:
     std::size_t min_qty = 0;

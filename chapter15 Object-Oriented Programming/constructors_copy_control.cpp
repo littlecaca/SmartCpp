@@ -148,10 +148,7 @@
  * The second exception is that the default, copy, and move constructors are not
  * inherited. These constructors are synthesized using the normal rules. An inherited
  * constructor is not treated as a user-defined constructor. Therefore, a class that
- * contains only inherited constructors will have a synthesized default constructor
- * 
- * 
- * 
+ * contains only inherited constructors will have a synthesized default constructor.
  * 
  */
 
@@ -294,6 +291,9 @@ int main(int argc, char const *argv[])
     d4.func();
 
     D5 d5;
+
+    Quote q1;
+    Quote q2(q1);
 
     return 0;
 }

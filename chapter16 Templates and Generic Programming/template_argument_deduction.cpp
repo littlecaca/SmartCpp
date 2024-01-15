@@ -1,3 +1,4 @@
+#include <utility>
 #include <type_traits>
 #include <string>
 #include <iostream>
@@ -144,6 +145,37 @@ using namespace std;
  * 
  * template <typename T> void f(T&&);       // binds to nonconst rvalues
  * template <typename T> ovid f(const T&);  // binds to const rvalues
+ * 
+ * 
+ * 
+ * Understanding std::move
+ * 
+ * static_cast from an Lvalue to an Rvalue Reference Is Permitted
+ * 
+ * static_cast<T &&> (t) == std::move(t);
+ * 
+ * 
+ * 
+ * Forwarding
+ * 
+ * Defining Function Parameters That Retain Type Information
+ * 
+ * We can preserve all the type information in an argument by defining its 
+ * corresponding function parameter as an rvalue reference to a template type parameter.
+ * 
+ * Using std::forward to Preserve Type Information in a Call
+ * 
+ * Unlike move, forward must be called with an explicit argument type. That is,
+ * the return type of forward<T> is T &&.
+ * 
+ * Ordinarily, we use forward to pass a function parameter that is defined as an rvalue
+ * reference to a template type parameter.
+ * 
+ * template <typename Type> intermediary(Type &&arg)
+ * {
+ *      finalFcn(std::forward<Type>(arg));
+ * }
+ * 
  */
 
 template <typename T> T func1(T, T);    // arguments are copied
@@ -151,6 +183,9 @@ template <typename T> int func2(const T &, const T &);            // reference
 template <typename T> T func3(const T(&)[10], const T(&)[10]);  // reference of array
 template <typename It> auto fcn(It beg, It end) -> decltype(*beg);
 template <typename T> int func6(T &, T &);            // reference
+template <typename T> int func7(T &);
+template <typename T> int func8(const T &);
+int func9(int &&);
 
 /*
  * Note that `type` is member of a class that depends on a template parameter. As a result,
@@ -199,6 +234,12 @@ int main(int argc, char const *argv[])
     void func5(int (*)(const string &, const string &));
     void func5(int (*)(const int &, const int &));
     // func5(compare); // more than one instance of overloaded function "func5" matches the argument list
+
+    const int &i = 8;
+    func7(i);
+    func8(3);
+
+    int &&y = 9;
 
     return 0;
 }

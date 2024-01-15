@@ -143,7 +143,7 @@ using std::uninitialized_copy;
  *
  * Move Iterators
  *
- * The new library defines a move iterator adaptor. Unlike other iterators,
+ * The `new` library defines a move iterator adaptor. Unlike other iterators,
  * the dereference operator of a move iterator yields a rvalue reference.
  *
  * make_move_iterator(<original iterator>)

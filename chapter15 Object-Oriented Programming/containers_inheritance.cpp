@@ -8,7 +8,7 @@
 /*
  * Warning
  * Because derived objects are "slice down" when assined to a base-type
- * object, containers and types relatrd by inheritance do not mix well.
+ * object, containers and types related by inheritance do not mix well.
  *
  * Put (Smart) Pointers, Not Objects, in Containers
  *
