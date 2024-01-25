@@ -152,7 +152,7 @@ using namespace std;
  * 
  * static_cast from an Lvalue to an Rvalue Reference Is Permitted
  * 
- * static_cast<T &&> (t) == std::move(t);
+ * static_cast<typename remove_reference<T>::type &&> (t) == std::move(t);
  * 
  * 
  * 
@@ -173,9 +173,17 @@ using namespace std;
  * 
  * template <typename Type> intermediary(Type &&arg)
  * {
- *      finalFcn(std::forward<Type>(arg));
+ *      finalFcn(std::forward<Type>(arg));  
  * }
  * 
+ * 
+ * About int &&i = 21;
+ * 
+ * A function parameter, like any other variable, is an lvalue expression.
+ * So here i is a lvalue in expressions.
+ * Variable expressions are lvalues. It may be surprising, but as a
+ * consequence, we cannot bind an rvalue reference to a variable defined as an rvalue
+ * reference type.
  */
 
 template <typename T> T func1(T, T);    // arguments are copied
