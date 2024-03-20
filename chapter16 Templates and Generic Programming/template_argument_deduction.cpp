@@ -87,7 +87,7 @@ using namespace std;
  * Template Argument Deduction and References
  * 
  * 
- * Type Deduction from Lvalueb Reference Function Parameters
+ * Type Deduction from Lvalue Reference Function Parameters
  * 
  * When a function parameter is an ordinary (lvalue) reference to a template  type
  * parameter (i.e., that has the form T &), the binding rules say that we can 
@@ -249,5 +249,7 @@ int main(int argc, char const *argv[])
 
     int &&y = 9;
 
+    int a1[10];
+    func1(a1, a1);
     return 0;
 }

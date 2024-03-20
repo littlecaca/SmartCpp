@@ -110,6 +110,17 @@ void StrVec::emplace_back(Args&&... args)
     alloc.construct(first_free++, std::forward<Args>(args)...);
 }
 
+template <class T> class Test11
+{
+    Test11(const T&) {}
+    void nothing();
+};
+
+class Test22
+{
+    void nothing();
+};
+
 int main(int argc, char const *argv[])
 {
     /* code */

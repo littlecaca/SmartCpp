@@ -47,6 +47,19 @@ private:
     std::shared_ptr<std::vector<T>> data;
 };
 
+template <typename T>
+class Blob<T &>
+{
+public:
+    template <typename It>
+    Blob(It begin, It end) : data(std::make_shared<std::vector<T>>(begin, end)) {}
+    Blob() : data(new std::vector<T>) {}
+    Blob(std::initializer_list<T> il) : data(std::make_shared<std::vector<T>>(il)) {}
+
+private:
+    std::shared_ptr<std::vector<T>> data;
+};
+
 int main(int argc, char const *argv[])
 {
     /* code */

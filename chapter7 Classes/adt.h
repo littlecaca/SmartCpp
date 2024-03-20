@@ -48,6 +48,13 @@ struct Sales_data {
     std::string bookNo;
     unsigned units_sold = 0; // this is called `in-class initializer`
     double revenue = 0.0;
+
+    bool operator==(const Sales_data &s) const
+    {
+        return s.bookNo == bookNo &&
+               s.revenue == revenue &&
+               s.units_sold == units_sold;
+    }
 };
 
 Sales_data add(const Sales_data &, const Sales_data &);
