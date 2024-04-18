@@ -36,6 +36,8 @@ using std::endl;
  * function--meaning the only executable statement it can have is a return
  * statement. As a result, the body of a constexpr constructor is typically
  * empty.
+ * 
+ * From C++14, the body of constexpr function can have local variable and loop statements.
  */
 
 // an example of literal class

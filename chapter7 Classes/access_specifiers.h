@@ -45,7 +45,7 @@ class Sales_data {
     // Sales_data(const std::string &s) : bookNo(s) {}
     
     // defines the default constructor as well as one that takes a string argument
-    explicit Sales_data(std::string s = "") : bookNo(s) {}
+    Sales_data(std::string s = "") : bookNo(s) {}
     Sales_data(const std::string &s, unsigned n, double p)
         : bookNo(s), units_sold(n), revenue(p * n) {}
     Sales_data(const std::string &s, unsigned n);

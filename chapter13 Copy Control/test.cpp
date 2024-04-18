@@ -27,6 +27,14 @@ public:
     Derive(Derive &&) {}
 };
 
+class Test
+{
+public:
+    Test(Test &&);
+    // Test(const Test &) = default;
+    Test() {};
+};
+
 int main(int argc, char const *argv[])
 {
     Base b;
@@ -42,5 +50,8 @@ int main(int argc, char const *argv[])
     // Base b2(std::move(b));
     // Derive d;
     // std::move(d);
+
+    // Test t;
+    // Test t2(t);
     return 0;
 }

@@ -7,7 +7,7 @@ template <class T> class Occur
 {
     const std::vector<T> &mem;
 public:
-    Occur(const std::vector<T> &m) : mem(m) {}
+    explicit Occur(const std::vector<T> &m) : mem(m) {}
     size_t count(const T &tar) const;
 };
 

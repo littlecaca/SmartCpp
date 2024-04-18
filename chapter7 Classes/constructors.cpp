@@ -29,7 +29,7 @@ using std::string;
  * Some Classes Cannot Rely on the Synthesized Default Constructor
  * 
  * First, the compiler generates a default constructor automatically only if a class declares
- * no constructors, so me may need to define our own default constructor is we have other constructors.
+ * no constructors, so we may need to define our own default constructor if we have other constructors.
  * 
  * Second, classes that have members of built-in or compound type usually should rely on
  * the synthesized default constructor only if all such members have in-class initializers.

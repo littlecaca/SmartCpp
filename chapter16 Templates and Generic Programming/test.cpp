@@ -12,6 +12,8 @@ void func(T &&t) {}
 template <typename T>
 void func(T t) {}
 
+
+
 int main(int argc, char const *argv[])
 {
 	std::string name = "sad";
