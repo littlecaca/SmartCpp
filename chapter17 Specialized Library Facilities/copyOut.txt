@@ -1,0 +1,6 @@
+this is
+an good way
+tellg
+seekg
+look
+8 20 26 32 37

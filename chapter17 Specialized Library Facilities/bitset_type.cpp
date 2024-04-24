@@ -3,21 +3,19 @@
 
 using namespace std;
 
-#define print(vec) \
-    for (int i = vec.size() - 1; i >= 0; --i) \
-        cout << vec[i]; \
-    cout << endl;
+#define Print(vec) \
+    cout << vec << endl;
 
-#define test(bitvec, method) \
+#define Test(bitvec, method) \
     if (bitvec.method()) \
         cout << "yes"; \
     else cout << "no"; \
     cout << " " #bitvec "." #method " "; \
-    print(bitvec);
+    Print(bitvec);
 
-#define output(bitvec, method) \
+#define Output(bitvec, method) \
     cout << bitvec.method() << " " #bitvec "." #method " "; \
-    print(bitvec);
+    Print(bitvec);
 
 /*
  * The standard library defines the bitset class to make it easier to use
@@ -68,18 +66,38 @@ int main(int argc, char const *argv[])
 
     bitset<20> bitVec1(0xbeef);
     bitset<13> bitVec2(0xbeef);
-    print(bitVec1);
-    print(bitVec2);
+    Print(bitVec1);
+    Print(bitVec2);
 
 
     // bitset operations
     bitset<10> b(~0);
     bitset<10> b2;
     bitset<10> b3(11);
+    const bitset<10> cb4(11);
 
-    test(b3, any)
-    test(b, all)
-    test(b2, none)
-    output(b3, count)
+    Test(b3, any)
+    Test(b, all)
+    Test(b2, none)
+    Output(b3, count)
+    Output(b3, size)
+    
+    /*
+     * Note
+     * These operations throw an overflow_error exception (§ 5.6, p. 193) if the
+     * value in the bitset does not fit in the specified type.
+     */
+    Output(b3, to_ulong)
+    Output(b, to_ulong)
+
+    /*
+     *     The subscript operator is overloaded on const. The const version returns a bool
+     * value true if the bit at the given index is on, false otherwise. The nonconst
+     * version returns a special type defined by bitset that lets us manipulate the bit value
+     * at the given index position
+     */
+    auto res1 = cb4[0];
+    auto res2 = b3[0];
+    
     return 0;
 }
