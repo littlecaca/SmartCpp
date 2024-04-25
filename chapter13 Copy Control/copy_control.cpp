@@ -264,7 +264,7 @@ class Test {
 	Test(Test &t) : i(t.i) {
 		std::cout << "Test(Test &t)" << std::endl;
 	}
-	Test(Test &t) = delete;
+	// Test(Test &t) = delete;
 };
 
 int main(int argc, char const *argv[]) {

@@ -1,5 +1,7 @@
+#include <algorithm>
 #include "StrVec.h"
 
+using namespace std;
 /*
  * Classes That Manage Dynamic Memory
  *
@@ -52,7 +54,7 @@ pair<string *, string *> StrVec::alloc_n(size_t n) {
 
 void StrVec::free() {
     if (elements) {
-        std::for_each(elements, first_free, [this](const string *sp) { alloc.destroy(sp); });
+        for_each(elements, first_free, [this](const string &sp) { alloc.destroy(&sp); });
         alloc.deallocate(elements, cap - elements);
     }
 }
