@@ -27,9 +27,6 @@ using namespace std;
  * Violating the Exception Specification
  *
  * It is important to understand that the compiler does not check the noexcept
- * specification at compile time.
- *
- * It is important to understand that the compiler does not check the noexcept
  * specification at compile time. In fact, the compiler is not permitted to reject a function
  * with a noexcept specifier merely because it contains a throw or calls a function that
  * might throw (however, kind compilers will warn about such usages).
@@ -200,3 +197,4 @@ int main(int argc, char const *argv[])
 
     return 0;
 }
+

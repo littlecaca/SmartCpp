@@ -91,7 +91,7 @@ template <size_t N, size_t M>
 int compare(const char (&)[N], const char (&)[M]);
 
 // special version of compare to handle pointers to character arrays
-// template <>
+template <>
 int compare(const char *const &p1, const char *const &p2)
 {
     return strcmp(p1, p2);
@@ -172,11 +172,11 @@ int main(int argc, char const *argv[])
 
     int i;
     // decltype(42) is int, uses the original template
-    remove_reference<decltype(42)>::type a;
+    remove_reference_<decltype(42)>::type a;
     // decltype(i) is int&, uses first (T&) partial specialization
-    remove_reference<decltype(i)>::type b;
+    remove_reference_<decltype(i)>::type b;
     // decltype(std::move(i)) is int&&, uses second (i.e., T&&) partial specialization
-    remove_reference<decltype(std::move(i))>::type c;
+    remove_reference_<decltype(std::move(i))>::type c;
 
     return 0;
 }

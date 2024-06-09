@@ -181,6 +181,7 @@ public:
 
 void handle_out_of_memory(const std::exception &e)
 {
+    throw;
 }
 
 template <typename T>
@@ -235,6 +236,7 @@ void manip()
     catch (...)
     {
         cout << "..." << endl;
+        throw;
     }
 }
 

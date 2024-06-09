@@ -5,13 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "java",
-            "name": "test",
-            "request": "launch",
-            "mainClass": "chapter15.test",
-            "projectName": "SmartCpp_840dab4"
-        },
-        {
             "name": "(Windows) Launch",
             "type": "cppvsdbg",
             "request": "launch",
