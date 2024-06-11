@@ -1,5 +1,46 @@
 #include <algorithm>
 #include "StrVec.h"
+void *operator new(size_t size)
+{
+    cout << "operator new" << endl;
+    if (void *mem = malloc(size))
+        return mem;
+    else
+        throw std::bad_alloc();
+}
+
+void *operator new(size_t size, const std::nothrow_t &) noexcept
+{
+    cout << "operator new nothrow" << endl;
+    return malloc(size);
+}
+
+void *operator new[](size_t size)
+{
+    cout << "operator new []" << endl;
+    return operator new(size);
+}
+
+void *operator new[](size_t size, const std::nothrow_t &) noexcept
+{
+    cout << "operator new[] nothrow" << endl; 
+    return operator new(size, std::nothrow);
+}
+
+void operator delete(void *mem) noexcept { 
+    cout << "delete" << endl;
+    ::free(mem); 
+}
+void operator delete[](void *mem) noexcept { 
+    cout << "delete[]" << endl;
+    ::free(mem); 
+}
+
+void operator delete(void *mem, size_t size) noexcept
+{
+    cout << "delete size" << endl;
+    ::free(mem);
+}
 
 using namespace std;
 /*
@@ -131,5 +172,9 @@ int main(int argc, char const *argv[])
         std::cout << s << std::endl;
     
      std::cout << sv.size() << " " << sv.capacity() << std::endl;
+
+    allocator<StrVec> allo;
+    StrVec *p = allo.allocate(12);
+    allo.deallocate(p, 12);
     return 0;
 }

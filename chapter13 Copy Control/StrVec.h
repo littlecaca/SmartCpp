@@ -5,17 +5,18 @@
 #include <iostream>
 #include <memory>
 
-using std::string;
 using std::allocator;
-using std::cout;
 using std::cin;
+using std::cout;
 using std::endl;
-using std::pair;
-using std::uninitialized_copy;
 using std::for_each;
 using std::initializer_list;
+using std::pair;
+using std::string;
+using std::uninitialized_copy;
 
-class StrVec {
+class StrVec
+{
     pair<string *, string *> alloc_n_copy(const string *b, const string *e);
     pair<string *, string *> alloc_n(size_t);
     void free();
@@ -28,15 +29,16 @@ class StrVec {
     string *elements;
     string *first_free;
     string *cap;
-  public:
+
+public:
     StrVec() : elements(nullptr), first_free(nullptr), cap(nullptr) {}
     StrVec(const initializer_list<string> &);
     StrVec(const StrVec &);
     StrVec &operator=(const StrVec &);
     ~StrVec() { free(); }
     template <class... Args>
-    void emplace_back(Args&& ...args);
-    
+    void emplace_back(Args &&...args);
+
     void push_back(const string &);
     size_t size() const { return first_free - elements; }
     size_t capacity() const { return cap - elements; }
@@ -44,4 +46,6 @@ class StrVec {
     string *end() const { return first_free; }
     void reserve(size_t);
     void resize(size_t);
+
 };
+    
