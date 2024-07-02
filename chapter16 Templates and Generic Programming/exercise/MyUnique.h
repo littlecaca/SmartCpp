@@ -3,6 +3,9 @@
 #include <iostream>
 #include <memory>
 
+/**
+ * 非线程安全
+ */
 template <typename T, typename Dx = std::default_delete<T>>
 class MyUnique
 {

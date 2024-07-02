@@ -171,10 +171,10 @@ int main(int argc, char const *argv[])
     for (auto &s : sv)
         std::cout << s << std::endl;
     
-     std::cout << sv.size() << " " << sv.capacity() << std::endl;
+    // std::cout << sv.size() << " " << sv.capacity() << std::endl;
 
-    allocator<StrVec> allo;
-    StrVec *p = allo.allocate(12);
-    allo.deallocate(p, 12);
+    // allocator<StrVec> allo;
+    // StrVec *p = allo.allocate(12);
+    // allo.deallocate(p, 12);
     return 0;
 }

@@ -61,11 +61,9 @@ using namespace std;
  * 
  * When we define our own operator new function, we can define additional
  * parameters. A new expression that uses such functions must use the placement form
- * C++ Primer, Fifth Edition
  * of new (§ 12.1.2, p. 460) to pass arguments to these additional parameters. Although
  * generally we may define our version of operator new to have whatever parameters
  * are needed, we may not define a function with the following form:
- * Click here to view code image
  * void *operator new(size_t, void*); // this version may not be redefined
  * This specific form is reserved for use by the library and may not be redefined.
  * 
@@ -156,6 +154,7 @@ void *operator new(size_t size)
 
 void *operator new(size_t size, nothrow_t &) 
 {
+    std::cout << "operator new" << std::endl;
     return malloc(size);
 }
 

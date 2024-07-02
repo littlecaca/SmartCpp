@@ -29,7 +29,7 @@ using namespace std;
  * decimal or scientific notation depending on the value of the number. The library
  * chooses a format that enhances readability of the number. Very large and very small
  * values are printed using scientific notation. Other values are printed in fixed decimal.
- * 
+ * s
  * We can change the precision by calling the precision member of an IO object or
  * by using the setprecision manipulator. 
  * 

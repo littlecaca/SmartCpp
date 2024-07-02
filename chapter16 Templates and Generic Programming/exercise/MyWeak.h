@@ -6,7 +6,9 @@
 
 using namespace std;
 
-
+/**
+ * 非线程安全
+ */
 template <typename T>
 class MyWeak
 {
@@ -31,6 +33,12 @@ public:
     bool expired() const noexcept
     {
         return !counter->ref_count;
+    }
+
+    ~MyWeak() noexcept
+    {
+        if (!--counter->count)
+            delete counter;
     }
 
 private:

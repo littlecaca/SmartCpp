@@ -46,6 +46,4 @@ public:
     string *end() const { return first_free; }
     void reserve(size_t);
     void resize(size_t);
-
 };
-    

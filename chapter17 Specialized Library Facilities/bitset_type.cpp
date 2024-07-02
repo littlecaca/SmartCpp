@@ -91,7 +91,7 @@ int main(int argc, char const *argv[])
     Output(b, to_ulong)
 
     /*
-     *     The subscript operator is overloaded on const. The const version returns a bool
+     * The subscript operator is overloaded on const. The const version returns a bool
      * value true if the bit at the given index is on, false otherwise. The nonconst
      * version returns a special type defined by bitset that lets us manipulate the bit value
      * at the given index position

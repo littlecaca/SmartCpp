@@ -80,6 +80,7 @@ enum
     Yellow,
     Red
 };
+
 enum Animal
 {
     rabbit,

@@ -3,6 +3,9 @@
 #include <memory>
 #include <functional>
 
+/**
+ * 非线程安全
+ */
 class PointerCounter
 {
 public:
@@ -119,6 +122,7 @@ public:
         return use_count() == 1;
     }
 
+private:
     T *tp;
     PointerCounter *counter;
     std::function<void(T *)> deleter;

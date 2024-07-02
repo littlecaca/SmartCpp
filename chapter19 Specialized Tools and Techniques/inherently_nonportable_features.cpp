@@ -181,6 +181,7 @@ public:
     void write();
     bool isRead() const;
     void setWrite();
+    File() : mode(01), modified(1) {}
 };
 
 File &File::open(File::modes m)

@@ -1,7 +1,7 @@
 #include <cstring>
 #include <string>
 #include <iostream>
-#include "..\chapter7 Classes\adt.h"
+#include "../chapter7 Classes/adt.h"
 using namespace std;
 /*
  * When we can’t (or don’t want to) use the
@@ -61,6 +61,7 @@ using namespace std;
  * of the template parameters or some, but not all, aspects of the parameters. 
  * 
  * A class template partial specialization is itself a template. 
+ * 
  * 
  * Note
  * We can partially specialize only a class template. We cannot partially
