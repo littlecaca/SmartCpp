@@ -128,8 +128,8 @@ class StrBlobPtr {
     // Increment and Decrement
     StrBlobPtr &operator++();
     StrBlobPtr &operator--();
-    StrBlobPtr operator++(int);
-    StrBlobPtr operator--(int);
+    const StrBlobPtr operator++(int);
+    const StrBlobPtr operator--(int);
 
     // Dereference and Arrow operators
     std::string &operator*();
@@ -186,13 +186,13 @@ StrBlobPtr &StrBlobPtr::operator--() {
     return *this;
 }
 
-StrBlobPtr StrBlobPtr::operator++(int) {
+const StrBlobPtr StrBlobPtr::operator++(int) {
     auto temp(*this);
     ++(*this);
     return temp;
 }
 
-StrBlobPtr StrBlobPtr::operator--(int) {
+const StrBlobPtr StrBlobPtr::operator--(int) {
     auto temp(*this);
     --(*this);
     return temp;
@@ -222,3 +222,10 @@ std::string *StrBlobPtr::operator->() {
 }
 
 #endif
+
+int main(int argc, char const *argv[])
+{
+    StrBlobPtr p1, p2;
+    p1++;
+    return 0;
+}
