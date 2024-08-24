@@ -1,4 +1,4 @@
-package itterator_traits;
+
 
 class Foo
 {

@@ -29,9 +29,9 @@ void merge_sort(std::list<T>& lst, Compare comp = Compare()) {
         int i = 0;
         while (i < fill && !counter[i].empty())
         {
-            counter[i].merge(carry);
-            // std::cout << carry << std::endl;
-            carry.swap(counter[i++]);
+            carry.merge(counter[i++]); // not stable
+            // counter[i].merge(carry);
+            // carry.swap(counter[i++]);
         }
         carry.swap(counter[i]);
         if (i == fill) ++fill;

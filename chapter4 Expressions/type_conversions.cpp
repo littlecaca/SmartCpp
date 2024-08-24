@@ -33,7 +33,7 @@ int main(int argc, char const *argv[])
      |
      |------Assignment Conversions
      |
-     |			In initializations and assignments, the initializer(except list initializer) ot right-hand
+     |			In initializations and assignments, the initializer(except list initializer) to right-hand
      |		operand is converted to the type of the variable.
      | 
      |------Defalut arguments Conversions
