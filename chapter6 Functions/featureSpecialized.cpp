@@ -163,6 +163,8 @@ int arr[scale(2)];
 
 int func(int i, const string &s = "") {
     cout << i << " " << s << endl;
+    int res = new_sz();
+    return res;
 }
 
 int main(int argc, char const *argv[])
@@ -181,6 +183,7 @@ int main(int argc, char const *argv[])
 }
 
 int cal(int i) {
+    std::cout << "sdd" << std::endl;
     return i * i;
 }
 

@@ -1,5 +1,15 @@
 #include <iostream>
 
+class Base
+{
+public:
+	operator bool()
+	{
+		return true;
+	}
+};
+
+
 int main(int argc, char const *argv[])
 {
 	/*
@@ -26,6 +36,8 @@ int main(int argc, char const *argv[])
 
 	// Other than those involving low-level const, any well-defined type conversion 
 	// can be requested using a static_cast
+
+	// bool res = static_cast<bool>(Base());
 
 	int i = 97, j = 21;
 	double d = 22.;
@@ -87,3 +99,5 @@ int main(int argc, char const *argv[])
 
 	return 0;
 }
+
+

@@ -67,11 +67,14 @@ Message::~Message() { remove_from_Folders(); }
 
 // Copy Assignment Operator
 Message &Message::operator=(const Message &msg) {
-    contents = msg.contents;
-    // The following two functions' order can't be changed
-    remove_from_Folders();
-    add_to_Folders(msg);
-    folders = msg.folders;
+    if (this != &msg)
+    {
+        contents = msg.contents;
+        // The following two functions' order can't be changed
+        remove_from_Folders();
+        add_to_Folders(msg);
+        folders = msg.folders;
+    }
     return *this;
 }
 
@@ -144,11 +147,14 @@ Folder::Folder(const Folder &f) : msgs(f.msgs), name(f.name) {
 }
 
 Folder &Folder::operator=(const Folder &f) {
-    for (auto pm : msgs)
-        pm->folders.erase(this);
-    msgs = f.msgs;
-    for (auto pm : msgs)
-        pm->folders.insert(this);
+    if (this != &f)
+    {
+        for (auto pm : msgs)
+            pm->folders.erase(this);
+        msgs = f.msgs;
+        for (auto pm : msgs)
+            pm->folders.insert(this);
+    }
     return *this;
 }
 

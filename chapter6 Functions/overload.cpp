@@ -3,8 +3,8 @@
 using std::string;
 
 /*
- * Functions that have the same neme but different parameter lists and that appear in the same scope
- * are overloaded.
+ * Functions that have the same neme but different parameter lists and that 
+ * appear in the same scope are overloaded.
  * 
  * The `main` function may not be overloaded.
  * 

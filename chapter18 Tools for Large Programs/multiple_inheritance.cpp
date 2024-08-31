@@ -90,16 +90,22 @@ class ZooAnimal
 
 class Endangered
 {
+public:
+    static Endangered critical;
 };
 
 class Bear : public ZooAnimal
 {
+public:
+    Bear() = default;
     Bear(const std::string &, bool, const std::string &);
 };
 
 class Panda : public Bear, public Endangered
 {
+public:
     Panda(std::string, bool);
+    Panda();
 };
 
 // explicitly initialize both base classes
