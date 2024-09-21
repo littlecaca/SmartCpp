@@ -5,7 +5,8 @@
 
 using namespace std;
 
-std::binary_semaphore bs(0);
+std::binary_semaphore bs(1);
+std::counting_semaphore cs(122);
 
 void Thread()
 {

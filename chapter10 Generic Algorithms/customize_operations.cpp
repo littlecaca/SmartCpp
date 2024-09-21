@@ -80,7 +80,8 @@ using namespace std::placeholders;
  * Lambda Captures and Return
  * 
  * When we define a lambda, the compiler generates a new (unamed) class
- * type (compiler-generated class type) that corresponds to that lambda. The type contains the data member corresponding
+ * type (compiler-generated class type) that corresponds to that lambda. 
+ * The type contains the data member corresponding
  * to the variables captured by the lambda. The data members of a lambda are initialized
  * when a lambda object is created.
  * 
@@ -197,6 +198,10 @@ int main(int argc, char const *argv[]) {
     // copy a `reference to vs` to the callable object named f
     auto f = [&vs]() { return true; };
     
+    int a, b, c;
+    auto f2 = [=, &a, &b] { a = 2; return true; };
+    auto f3 = [=]() mutable { a = 4; return true; };
+
     for (auto &word : vs) {
         cout << word << " ";
     }
