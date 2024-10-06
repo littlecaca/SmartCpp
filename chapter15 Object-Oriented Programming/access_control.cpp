@@ -63,12 +63,15 @@
  * specifier for members and the default derivation access specifier.
  */
 
+#include <iostream>
+
 class Base {
     friend class Pal;
   public:
     int public_mem;
     int f();
   protected:
+    Base() : prot_mem(12) {}
     int prot_mem;
   private:
     int priv_mem;
@@ -92,7 +95,14 @@ class Derived : private Base {
   public:
     using Base::public_mem;
     using Base::f;
-  protected:
     using Base::prot_mem;
+  protected:
 
 };
+
+int main(int argc, char const *argv[])
+{
+  Derived d;
+  std::cout << d.prot_mem << std::endl;
+  return 0;
+}
