@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 int test(int mat[10][10])
 {

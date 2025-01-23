@@ -1,6 +1,7 @@
 #include <iostream>
 
 /*
+ * 委托构造
  * When a constructor delegates to another constructor, the constructor initializer list
  * and function body of the delegated-to constructors are both executed.
  */

@@ -28,7 +28,5 @@ int main(int argc, char const *argv[])
     // the list of initializers must not contain more elements than the class has members
     Data val1 = {0, "Anna"};
     Data val2 {1, "jlk"};
-
-    
     return 0;
 }

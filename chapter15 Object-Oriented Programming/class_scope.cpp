@@ -57,6 +57,7 @@ public:
     virtual void f() { std::cout << "Base f()" << std::endl; };
     void f(int) { std::cout << "Base f(int)" << std::endl; }
     void f(int, int) { std::cout << "Base f(int, int)" << std::endl; }
+    void lala() {}
 };
 
 class Derived : public Base {
@@ -64,7 +65,7 @@ public:
     // int f() override {};
     using Base::f;
     void f() override { std::cout << "Derived f()" << std::endl; }
-  
+    void lala() {}
 };
 
 int main(int argc, char const *argv[])

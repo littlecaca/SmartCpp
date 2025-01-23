@@ -53,7 +53,7 @@ namespace A1
 }
 
 // global
-// void f2(A::A2::A3::Derived);
+void f2(A1::A2::A3::Derived);
 
 int main(int argc, char const *argv[])
 {
