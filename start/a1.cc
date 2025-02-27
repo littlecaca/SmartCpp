@@ -19,7 +19,7 @@ int main()
     default:
         cout << "no" << endl;
     }
-
+    
     std::string text;
     std::string t2;
 

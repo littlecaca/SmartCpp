@@ -15,7 +15,8 @@ using namespace std;
  * 
  * Except for the top-level consts, the only other conversions performed in a call
  * to a function template are:
- *  1.monodirectional low-level const conversions (reference or pointer)
+ *  1.monodirectional low-level const（底层const, 常量指针或常量引用） 
+    conversions (reference or pointer)
  *  2.Array- or function-to-pointer conversions. If the function parameter is not a 
  *  reference type, then the normal pointer conversion will be applied to arguments
  *  of array and function type.
@@ -193,7 +194,9 @@ template <typename It> auto fcn(It beg, It end) -> decltype(*beg);
 template <typename T> int func6(T &, T &);            // reference
 template <typename T> int func7(T &);
 template <typename T> int func8(const T &);
+
 int func9(int &&);
+template <typename T> T func10(T *, T *);
 
 /*
  * Note that `type` is member of a class that depends on a template parameter. As a result,
@@ -210,6 +213,24 @@ template <typename T> int compare(const T &, const T &);
 
 int main(int argc, char const *argv[])
 {
+    // 1. enable monodirectional low-level const conversions
+    // deduced conflicting types for parameter 'T' ('int *' vs. 'const int *')
+    // 原因：模板参数推导是根据每个实参的类型独立进行的，对于同一个模板参数，每个
+    // 实参推导出来的类型必须完全一致。在下面func10的例子中，p1推导出T = int *，p2推导出
+    // T = const int *，所以会报错：deduced conflicting types
+    // 再看func2的情况，同样的实参一个是low-level const一个是非low-level const，但是
+    // 每个实参推导出的T的类型是一致的，string &能够推导出T为string, 因为允许单向的非常量
+    // 引用向常量引用的隐式转换。第二个实参自然也能推导出T为string，因此二者是一致的。
+    // 所以总结一下，有三个关键点：
+    // 1. 每个实参独立推导模板参数类型。
+    // 2. 再每个实参的推导过程中，允许两种隐式转换。
+    // 3. 最终对同一个模板参数推导出的类型必须相同。
+
+    int i1; const int i2 = 1;
+    int *p1 = &i1; const int *p2 = &i2;
+    // func1(p1, p2);
+    // func10(p1, p2);
+
     string s1;
     const string s2;
     func1(s1, s2);
