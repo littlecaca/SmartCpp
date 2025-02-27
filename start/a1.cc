@@ -1,34 +1,31 @@
-#include <atomic>
-#include <cctype>
+#include <string>
+#include <cstring>
 #include <iostream>
-#include <algorithm>
-#include <type_traits>
+#include <string.h>
 
 using namespace std;
 
-template <typename T>
-constexpr remove_reference<T> &&move(T &&obj) noexcept
-{
-    return static_cast<remove_reference<T>&&>(obj);
+template <class Ty>
+bool mymax(Ty left, Ty right) {
+    return left < right ? right : left;
 }
 
-template <class T>
-void f(T &)
+int main()
 {
-    return;
-}
+    int n = 12;
+    switch (n) {
+    case 12:
+        cout << "yes" << endl;
+    default:
+        cout << "no" << endl;
+    }
 
+    std::string text;
+    std::string t2;
 
-int main(int argc, char const *argv[])
-{
-    // atomic<int> value = 31;
-    // cout << value << endl;
-    int x;
-    const int y = 12;
-    f(y);
-
+    memmove(text.data(), t2.data(), t2.size());
     
-
-    std::move(x);
+    int a = 1;
+    float b = 2;
     return 0;
 }
