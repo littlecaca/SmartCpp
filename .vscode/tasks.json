@@ -70,7 +70,8 @@
                 "/EHsc",
                 "/nologo",
                 "/Fe${fileBasenameNoExtension}.exe",
-                "${file}"
+                "${file}",
+                "/std:c++20"
             ],
             "options": {
                 "cwd": "${workspaceFolder}\\build"
