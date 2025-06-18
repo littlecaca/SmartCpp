@@ -11,6 +11,8 @@ using std::string;
  *      3. It has no in-class initializers
  *      4. It has no base classes or virtual functions, which are class-related features.
  * Just like original C style struct but it can contain member function.
+ * The most important feature of the aggregate class is that it can be initialized by a initializer list
+ * with members having different types.
  */
 
 
