@@ -38,7 +38,6 @@ using std::flush;
 using std::unitbuf;
 using std::nounitbuf;
 
-
 // IO Library Condition State
 iostream::iostate state[4] = {iostream::badbit, iostream::failbit, iostream::eofbit, iostream::goodbit};
 
@@ -61,7 +60,7 @@ iostream::iostate state[4] = {iostream::badbit, iostream::failbit, iostream::eof
  * determine the state of a stream object is to use that obejct as a condition.
  *  
  * 
- * Interrogating the State of a Stream
+ * Interrogating(查询) the State of a Stream
  * 
  * The machine-dependent integral type named iostate is used to convey information about the 
  * state of a stream.

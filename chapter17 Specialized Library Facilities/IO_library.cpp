@@ -200,6 +200,7 @@ int main(int argc, char const *argv[])
     cout << "in hex: " << hex << 20 << " " << 1024 << endl;
     cout << "in decimal: " << dec << 20 << " " << 1024 << endl;
     cout << noshowbase; // reset the state of the stream
+    cout << "base == 0 in hex: " << setbase(0) << 134214 << endl;
     // Uppercase 
     cout << uppercase << showbase << hex << "printed in hexadecimal: " 
         << 20 << " " << 1024 << nouppercase << noshowbase << dec << endl;
@@ -213,14 +214,15 @@ int main(int argc, char const *argv[])
     cout << "Default precision: " << cout.precision() << endl;
     cout << 3.1415926 << endl;
     cout.precision(5);
+    cout << 32455543.23 << "\n";
     cout << 3.1415926 << "\n\n";
 
     // Specifying the Notation of Floating-Point Numbers
     cout << "default format: " << 100 * sqrt(2.0) << '\n' 
         << "scientific: " << scientific << 100 * sqrt(2.0) << '\n'
-        << "fixed decimal: " << fixed << 100 * sqrt(2.0) << '\n'
-        << "hexadecimal: " << hexfloat << 100 * sqrt(2.0) << '\n'
-        << "use defaults: " << defaultfloat << 100 * sqrt(2.0) << "\n\n";
+        << "fixed decimal: " << fixed << 100 * sqrt(2.0) << '\n';
+        // << "hexadecimal: " << std::hexfloat << 100 * sqrt(2.0) << '\n'
+        // << "use defaults: " << std::defaultfloat << 100 * sqrt(2.0) << "\n\n";
 
     // Printing the Decimal Point
     cout << 10.0 << endl; // prints 10

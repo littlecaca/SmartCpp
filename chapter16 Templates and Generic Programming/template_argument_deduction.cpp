@@ -16,7 +16,7 @@ using namespace std;
  * Except for the top-level consts, the only other conversions performed in a call
  * to a function template are:
  *  1.monodirectional low-level const（底层const, 常量指针或常量引用） 
-    conversions (reference or pointer)
+ *  conversions (reference or pointer)
  *  2.Array- or function-to-pointer conversions. If the function parameter is not a 
  *  reference type, then the normal pointer conversion will be applied to arguments
  *  of array and function type.
@@ -35,6 +35,7 @@ using namespace std;
  * Because there are limited conversions, the arguments to such parameters
  * must have essentially the same type. If the deduced types do not match, then the call
  * is an error. 
+ * 函数模版的多个参数是独立进行推断的，推断出的结果（即模版参数T的类型）必须完全一致。
  * 
  * 
  * 

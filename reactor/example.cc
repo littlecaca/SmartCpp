@@ -2,6 +2,16 @@
 
 #include <condition_variable>
 #include <vector>
+
+#include <sys/epoll.h>
+
+using namespace std;
+
+struct Event;
+
+/**
+ * 以下是柠檬微趣一面写的
+ */
 class Poller
 {
 public:
