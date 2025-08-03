@@ -1,11 +1,5 @@
 CompileFlags:
-<<<<<<< HEAD
   Add: [
-    -I/home/lifeiyang03/gcc-10.3.0/gcc-10.3.0_6/gcc-10.3.0/include/c++/10.3.0,
-    -I/home/lifeiyang03/gcc-10.3.0/gcc-10.3.0_6/gcc-10.3.0/include/c++/10.3.0/x86_64-pc-linux-gnu,
-    -std=c++17,
+    - --target=x86_64-w64-mingw32,
+    -std=c++17
   ]
-=======
-  Add: 
-    - --target=x86_64-w64-mingw32
->>>>>>> af1411c (example)
