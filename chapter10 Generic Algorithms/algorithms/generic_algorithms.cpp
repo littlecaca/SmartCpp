@@ -36,7 +36,7 @@ using std::unique;
  * They operate solely in terms of iterators and iterator operations. That means that algorithms
  * may change the values of the elements stored in the container, and they may move elements around
  * within the container, but they do not, however, ever add or remove elements directly.
- * c
+ * 
  * 
  * The algorithms that take an input range always use their first two parameters to denote that range.
  * The most basic way to understand the algorithms is to know whether they read elements, write elements,

@@ -1,3 +1,7 @@
+#include <iostream>
+
+using namespace std;
+
 /**
 什么是 value-initialization
 value-initialization 是一种初始化形式，在 C++ 中通常由以下语法触发：
@@ -8,8 +12,26 @@ value-initialization 是一种初始化形式，在 C++ 中通常由以下语法
 
 对于POD类型：执行0初始化
 对于非POD类型：
-    如果对象没有显式声明默认构造函数，并且编译器自动生成了默认构造函数，则执行0初始化。
+    如果对象没有显式声明默认构造函数，并且编译器自动生成了默认构造函数，则对每个成员执行value-initialization。
     否则调用默认构造函数。
 */
 
- 
+struct Base {
+    Base() : name("Base") {
+
+    }
+    const char* name;
+};
+
+struct Foo {
+    int i;
+    Base base_;
+};
+
+int main() {
+    int i{};
+    cout << i << endl;
+    Foo f{};
+    cout << f.i << ", " << f.base_.name << endl;
+    return 0;
+}
