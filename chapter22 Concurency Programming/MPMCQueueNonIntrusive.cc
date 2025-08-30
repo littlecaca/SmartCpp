@@ -1,13 +1,13 @@
 #include <atomic>
 
 template<typename T>
-class MPSCQueueNonIntrusive
+class MPMCQueueNonIntrusive
 {
 public:
-    MPSCQueueNonIntrusive()
+    MPMCQueueNonIntrusive()
         : _head(new Node()), _tail(_head.load(std::memory_order_relaxed)) {}
 
-    ~MPSCQueueNonIntrusive() {
+    ~MPMCQueueNonIntrusive() {
         T *output;
         while (Dequeue(output))
             ;
@@ -21,24 +21,27 @@ public:
     {
         // 尾插法
         // 通过原子交换，拿到旧的head（该旧head变为独占资源），然后将旧head的next设置为新head
-        // 这里可以保证每个生产者拿到的都是唯一的最新的头结点，所以不会有并发问题
         Node* node = new Node(input);
         Node* prevHead = _head.exchange(node, std::memory_order_acq_rel);
         prevHead->Next.store(node, std::memory_order_release);
     }
 
-    // 单消费者无锁出队
+    // 多消费者无锁出队
     bool Dequeue(T*& result)
     {
-        Node* tail = _tail.load(std::memory_order_acquire);
-        Node* next = tail->Next.load(std::memory_order_acquire);
-        if (!next)
-            return false;
-
-        result = next->Data;
-        _tail.store(next, std::memory_order_release);
-        delete tail;
-        return true;
+        while (true) {
+            Node* tail = _tail.load(std::memory_order_relaxed);
+            Node* next = tail->Next.load(std::memory_order_acquire);
+            if (!next) {
+                return false;
+            }
+            result = next->Data;
+            if (!_tail.compare_exchange_weak(tail, next, std::memory_order_acq_rel)) {
+                continue;   
+            }
+            delete tail;
+            break;
+        }
     }
 
 private:
@@ -54,8 +57,8 @@ private:
     std::atomic<Node*> _head;
     std::atomic<Node*> _tail;
 
-    MPSCQueueNonIntrusive(MPSCQueueNonIntrusive const&) = delete;
-    MPSCQueueNonIntrusive& operator=(MPSCQueueNonIntrusive const&) = delete;
+    MPMCQueueNonIntrusive(MPMCQueueNonIntrusive const&) = delete;
+    MPMCQueueNonIntrusive& operator=(MPMCQueueNonIntrusive const&) = delete;
 };
 
 int main() {
