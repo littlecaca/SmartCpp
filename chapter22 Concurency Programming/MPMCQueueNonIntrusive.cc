@@ -30,7 +30,7 @@ public:
     bool Dequeue(T*& result)
     {
         while (true) {
-            Node* tail = _tail.load(std::memory_order_relaxed);
+            Node* tail = _tail.load(std::memory_order_acquire);
             Node* next = tail->Next.load(std::memory_order_acquire);
             if (!next) {
                 return false;
